@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="css/blueimp-gallery.min.css" />
     <title>DESIGN3D</title>
 
 <body>
@@ -13,7 +14,8 @@
         <div class="navbar w3-padding-small w3-center w3-bar">
             <button onclick="startWriting('txt/welcome.txt')" class="w3-button w3-blue-grey w3-border">Welcome</button>
             <button onclick="startWriting('txt/skills.txt')" class="w3-button w3-blue-grey">Skills</button>
-            <button onclick="startWriting('txt/portfolio.txt')" class="w3-button w3-blue-grey">3D Portfolio</button>
+            <button onclick="startWritingPortfolio('txt/portfolio.txt')" class="w3-button w3-blue-grey">3D
+                Portfolio</button>
             <button onclick="startWriting('txt/showcase.txt')" class="w3-button w3-blue-grey">3D Showcase</button>
             <button onclick="startWriting('txt/contact.txt')" class="w3-button w3-blue-grey">Contact</button>
         </div>
@@ -22,24 +24,132 @@
                 <p>[user@DESIGN3D ~]$
                     <span id="content"></span>
                     <span id="cursor">█</span>
-                    <script>
-                        var cursor = true;
-                        var speed = 500;
-                        setInterval(() => {
-                            if (cursor) {
-                                document.getElementById('cursor').style.opacity = 0;
-                                cursor = false;
-                            } else {
-                                document.getElementById('cursor').style.opacity = 1;
-                                cursor = true;
-                            }
-                        }, speed);
-                    </script>
+                <div class="container" id="links">
+                    <div class="item ">
+                        <a class="item-link" href="img/portfolio/bender.jpg">
+                            <img class="img-fluid thumbs" src="img/portfolio/bender.jpg" alt="">
+                        </a>
+                    </div>
+
+                    <div class="item ">
+                        <a class="item-link" href="img/portfolio/sun.jpg">
+                            <img class="img-fluid thumbs" src="img/portfolio/sun.jpg" alt="">
+                        </a>
+                    </div>
+
+                    <div class="item ">
+                        <a class="item-link" href="img/portfolio/wall.jpg">
+                            <img class="img-fluid thumbs" src="img/portfolio/wall.jpg" alt="">
+                        </a>
+                    </div>
+
+                    <!-- <div class="item ">
+                            <a class="item-link"  href="img/portfolio/pan.jpg">
+                                <img class="img-fluid thumbs" src="img/portfolio/pan.jpg" alt="">
+                            </a>
+                        </div> -->
+
+                    <div class="item ">
+                        <a class="item-link" href="img/portfolio/bantu2.png">
+                            <img class="img-fluid thumbs" src="img/portfolio/bantu2.png" alt="">
+                        </a>
+                    </div>
+
+                    <div class="item ">
+                        <a class="item-link" href="img/portfolio/bantu3.png">
+                            <img class="img-fluid" src="img/portfolio/bantu3.png" alt="">
+                        </a>
+                    </div>
+
+                    <div class="item ">
+                        <a class="item-link" href="img/portfolio/bantu4.png">
+                            <img class="img-fluid" src="img/portfolio/bantu4.png" alt="">
+                        </a>
+                    </div>
+
+                    <div class="item ">
+                        <a class="item-link" href="img/portfolio/videos/bantu5.mp4" type="video/mp4"
+                            data-poster="img/portfolio/videos/thumbs/thumb2.png">
+                            <!-- <img class="icon" src="img/video-play.png" alt="">  -->
+                            <img class="img-fluid" src="img/portfolio/videos/thumbs/thumb2.png" alt="">
+                        </a>
+                    </div>
+
+                    <div class="item ">
+                        <a class="item-link" href="img/portfolio/ger1.jpg">
+                            <img class="img-fluid" src="img/portfolio/ger1.jpg" alt="">
+                        </a>
+                    </div>
+
+                    <div class="item ">
+                        <a class="item-link" href="img/portfolio/ger2.jpg">
+                            <img class="img-fluid" src="img/portfolio/ger2.jpg" alt="">
+                        </a>
+                    </div>
+
+                    <div class="item ">
+                        <a class="item-link" href="img/portfolio/campo.jpg">
+                            <img class="img-fluid" src="img/portfolio/campo.jpg" alt="">
+                        </a>
+                    </div>
+
+                    <div class="item ">
+                        <a class="item-link" href="img/portfolio/eva.jpg">
+                            <img class="img-fluid" src="img/portfolio/eva.jpg" alt="">
+                        </a>
+                    </div>
+
+                    <div class="item ">
+                        <a class="item-link" href="img/portfolio/transistor.jpg">
+                            <img class="img-fluid" src="img/portfolio/transistor.jpg" alt="">
+                        </a>
+                    </div>
+
+
+                    <div class="item ">
+                        <a class="item-link" href="img/portfolio/videos/totoro.mp4" type="video/mp4"
+                            data-poster="img/portfolio/videos/thumbs/thumb1.png">
+                            <!-- <img class="icon" src="img/video-play.png" alt="">  -->
+                            <img class="img-fluid" src="img/portfolio/videos/thumbs/thumb1.png" alt="">
+                        </a>
+
+                    </div>
+
+                    <div class="item ">
+                        <a class="item-link" href="img/portfolio/wall.jpg">
+                            <img class="img-fluid" src="img/portfolio/wall.jpg" alt="">
+                        </a>
+                    </div>
+                </div>
+                <script>
+                    var cursor = true;
+                    var speed = 500;
+                    setInterval(() => {
+                        if (cursor) {
+                            document.getElementById('cursor').style.opacity = 0;
+                            cursor = false;
+                        } else {
+                            document.getElementById('cursor').style.opacity = 1;
+                            cursor = true;
+                        }
+                    }, speed);
+                </script>
                 </p>
             </div>
         </div>
     </div>
 
+    <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" aria-label="image gallery"
+        aria-modal="true" role="dialog">
+        <div class="slides" aria-live="polite"></div>
+        <h3 class="title"></h3>
+        <a class="prev" aria-controls="blueimp-gallery" aria-label="previous slide" aria-keyshortcuts="ArrowLeft"></a>
+        <a class="next" aria-controls="blueimp-gallery" aria-label="next slide" aria-keyshortcuts="ArrowRight"></a>
+        <a class="close" aria-controls="blueimp-gallery" aria-label="close" aria-keyshortcuts="Escape"></a>
+        <a class="play-pause" aria-controls="blueimp-gallery" aria-label="play slideshow" aria-keyshortcuts="Space"
+            aria-pressed="false" role="button"></a>
+        <ol class="indicator"></ol>
+    </div>
     <script>
         var content = document.getElementById("content");
         var i;
@@ -47,20 +157,61 @@
         var txt = "";
         function startWriting(file) {
             i = 0;
-            speed = 1;
+            speed = 0;
             content.innerHTML = "";
             fetch(file).then(r => r.text()).then(text => {
                 txt = text;
                 typeWriter();
-                console.log(txt);
+                // console.log(txt);
             });
         }
+
+        function startWritingPortfolio(file) {
+            i = 0;
+            speed = 0;
+            content.innerHTML = "";
+            fetch(file).then(r => r.text()).then(text => {
+                txt = text;
+                typeWriter();
+                // console.log(txt);
+            });
+            drawPortfolio();
+        }
+
         function typeWriter() {
             if (i < txt.length) {
                 content.innerHTML += txt.charAt(i).replace("\n", "<br/>").replace(/\s/g, '&nbsp;');
                 i++;
                 setTimeout(typeWriter, speed);
             }
+        }
+
+        function drawPortfolio() {
+            content.innerHTML += '';
+            var container = document.getElementById("container");
+            getDivsFromFile();
+
+        }
+
+        function getDivsFromFile() {
+            fetch('txt/portfolio.txt').then(r => r.text()).then(text => {
+                var divs = text.split("?");
+                divs.forEach(div => {
+                    container.innerHTML += div;
+                });
+            });
+        }
+
+    </script>
+    <script src="js/blueimp-gallery.min.js"></script>
+    <script>
+        document.getElementById('links').onclick = function (event) {
+            event = event || window.event
+            var target = event.target || event.srcElement
+            var link = target.src ? target.parentNode : target
+            var options = { index: link, event: event }
+            var links = this.getElementsByTagName('a')
+            blueimp.Gallery(links, options)
         }
     </script>
 </body>

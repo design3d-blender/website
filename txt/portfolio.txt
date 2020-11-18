@@ -1,1 +1,2 @@
-Portfolio message
+cd portfolio
+[user@DESIGN3D ~/portfolio]$ sxiv -t *.png

@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    height: 100vh;
 }
 
 .page {
@@ -11,9 +12,11 @@ body {
 
 .navbar{
     background-color: rgb(41, 41, 41);
+    height: 3%;
 }
 
 .desktop {
+    height: 95.5%;
     margin: 0;
     background-image: url(/img/flower.jpg);
     display: flex;
@@ -25,6 +28,9 @@ body {
     flex: 1;
     padding-left: 10px;
     padding-right: 10px;
+    overflow: auto;
+    height: 100%;
+    width: 100%;
 }
 .console p{
     color: white;
@@ -34,3 +40,20 @@ body {
 #cursor{
     color: white;
 }
+
+.container{
+    display: none;
+}
+.item{
+    padding: 2%;
+    height: 32%;
+    width: 32%;
+    display: inline-block;
+}
+
+.img-fluid{
+    max-height:100%;
+    max-width: 100%; 
+    object-fit: cover;
+}
+
