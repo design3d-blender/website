@@ -1,6 +1,5 @@
 body {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 .page {
@@ -29,6 +28,7 @@ body {
 }
 .console p{
     color: white;
+    font-family: monospace;
 }
 
 #cursor{

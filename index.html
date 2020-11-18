@@ -12,7 +12,7 @@
     <div class="page">
         <div class="navbar w3-padding-small w3-center w3-bar">
             <button onclick="startWriting('txt/welcome.txt')" class="w3-button w3-blue-grey w3-border">Welcome</button>
-            <button onclick="startWriting('txt/programming.txt')" class="w3-button w3-blue-grey">Programming</button>
+            <button onclick="startWriting('txt/skills.txt')" class="w3-button w3-blue-grey">Skills</button>
             <button onclick="startWriting('txt/portfolio.txt')" class="w3-button w3-blue-grey">3D Portfolio</button>
             <button onclick="startWriting('txt/showcase.txt')" class="w3-button w3-blue-grey">3D Showcase</button>
             <button onclick="startWriting('txt/contact.txt')" class="w3-button w3-blue-grey">Contact</button>
@@ -20,6 +20,7 @@
         <div class="desktop w3-padding-large">
             <div class="console w3-topbar w3-bottombar w3-leftbar w3-rightbar">
                 <p>[user@DESIGN3D ~]$
+                    <span id="content"></span>
                     <span id="cursor">█</span>
                     <script>
                         var cursor = true;
@@ -35,7 +36,6 @@
                         }, speed);
                     </script>
                 </p>
-                <p id="content"></p>
             </div>
         </div>
     </div>
@@ -47,16 +47,17 @@
         var txt = "";
         function startWriting(file) {
             i = 0;
-            speed = 10;
+            speed = 1;
             content.innerHTML = "";
             fetch(file).then(r => r.text()).then(text => {
                 txt = text;
                 typeWriter();
+                console.log(txt);
             });
         }
         function typeWriter() {
             if (i < txt.length) {
-                content.innerHTML += txt.charAt(i);
+                content.innerHTML += txt.charAt(i).replace("\n", "<br/>").replace(/\s/g, '&nbsp;');
                 i++;
                 setTimeout(typeWriter, speed);
             }

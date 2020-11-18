@@ -1,0 +1,40 @@
+tree skills
+skills
+├── 3D_Design
+│   ├── AutoCAD
+│   ├── Blend4Web
+│   ├── Blender
+│   ├── Krita
+│   ├── Photoshop
+│   ├── Substance
+│   └── Three.js
+└── Programming
+    ├── Applications
+    │   ├── C
+    │   ├── Java
+    │   │   ├── Hibernate
+    │   │   ├── JavaEE
+    │   │   ├── JavaEE_8
+    │   │   ├── JavaEE_8-11
+    │   │   ├── JPA
+    │   │   ├── Maven
+    │   │   ├── Quarkus
+    │   │   ├── REST
+    │   │   ├── SpringData
+    │   │   └── Wildfly
+    │   ├── Lisp
+    │   └── Python
+    ├── DataBase
+    │   ├── MongoDB
+    │   ├── MySQL
+    │   └── SQL
+    └── Web
+        ├── Angular.js
+        ├── ClojureScript
+        ├── CSS
+        ├── HTML
+        ├── Javascript
+        └── Vue.js
+
+35 directories
+[user@DESIGN3D ~]$ 
