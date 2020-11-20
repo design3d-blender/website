@@ -14,8 +14,7 @@
         <div class="navbar w3-padding-small w3-center w3-bar">
             <button onclick="startWriting('txt/welcome.txt')" class="w3-button w3-blue-grey w3-border">Welcome</button>
             <button onclick="startWriting('txt/skills.txt')" class="w3-button w3-blue-grey">Skills</button>
-            <button onclick="startWritingPortfolio('txt/portfolio.txt')" class="w3-button w3-blue-grey">3D
-                Portfolio</button>
+            <button onclick="drawPortfolio('txt/portfolio.txt')" class="w3-button w3-blue-grey">3D Portfolio</button>
             <button onclick="startWriting('txt/showcase.txt')" class="w3-button w3-blue-grey">3D Showcase</button>
             <button onclick="startWriting('txt/contact.txt')" class="w3-button w3-blue-grey">Contact</button>
         </div>
@@ -25,49 +24,49 @@
                     <span id="content"></span>
                     <span id="cursor">█</span>
                 <div class="container" id="links">
-                    <div class="item ">
+                    <div id="item1" class="item">
                         <a class="item-link" href="img/portfolio/bender.jpg">
                             <img class="img-fluid thumbs" src="img/portfolio/bender.jpg" alt="">
                         </a>
                     </div>
 
-                    <div class="item ">
+                    <div id="item2" class="item">
                         <a class="item-link" href="img/portfolio/sun.jpg">
                             <img class="img-fluid thumbs" src="img/portfolio/sun.jpg" alt="">
                         </a>
                     </div>
 
-                    <div class="item ">
+                    <div id="item3" class="item">
                         <a class="item-link" href="img/portfolio/wall.jpg">
                             <img class="img-fluid thumbs" src="img/portfolio/wall.jpg" alt="">
                         </a>
                     </div>
 
-                    <!-- <div class="item ">
+                    <!-- <div class="item">
                             <a class="item-link"  href="img/portfolio/pan.jpg">
                                 <img class="img-fluid thumbs" src="img/portfolio/pan.jpg" alt="">
                             </a>
                         </div> -->
 
-                    <div class="item ">
+                    <div id="item4" class="item">
                         <a class="item-link" href="img/portfolio/bantu2.png">
                             <img class="img-fluid thumbs" src="img/portfolio/bantu2.png" alt="">
                         </a>
                     </div>
 
-                    <div class="item ">
+                    <div id="item5" class="item">
                         <a class="item-link" href="img/portfolio/bantu3.png">
                             <img class="img-fluid" src="img/portfolio/bantu3.png" alt="">
                         </a>
                     </div>
 
-                    <div class="item ">
+                    <div id="item6" class="item">
                         <a class="item-link" href="img/portfolio/bantu4.png">
                             <img class="img-fluid" src="img/portfolio/bantu4.png" alt="">
                         </a>
                     </div>
 
-                    <div class="item ">
+                    <div id="item7" class="item">
                         <a class="item-link" href="img/portfolio/videos/bantu5.mp4" type="video/mp4"
                             data-poster="img/portfolio/videos/thumbs/thumb2.png">
                             <!-- <img class="icon" src="img/video-play.png" alt="">  -->
@@ -75,38 +74,38 @@
                         </a>
                     </div>
 
-                    <div class="item ">
+                    <div id="item8" id="item1" class="item">
                         <a class="item-link" href="img/portfolio/ger1.jpg">
                             <img class="img-fluid" src="img/portfolio/ger1.jpg" alt="">
                         </a>
                     </div>
 
-                    <div class="item ">
+                    <div id="item9" class="item">
                         <a class="item-link" href="img/portfolio/ger2.jpg">
                             <img class="img-fluid" src="img/portfolio/ger2.jpg" alt="">
                         </a>
                     </div>
 
-                    <div class="item ">
+                    <div id="item10" class="item">
                         <a class="item-link" href="img/portfolio/campo.jpg">
                             <img class="img-fluid" src="img/portfolio/campo.jpg" alt="">
                         </a>
                     </div>
 
-                    <div class="item ">
+                    <div id="item11" class="item">
                         <a class="item-link" href="img/portfolio/eva.jpg">
                             <img class="img-fluid" src="img/portfolio/eva.jpg" alt="">
                         </a>
                     </div>
 
-                    <div class="item ">
+                    <div id="item12" class="item">
                         <a class="item-link" href="img/portfolio/transistor.jpg">
                             <img class="img-fluid" src="img/portfolio/transistor.jpg" alt="">
                         </a>
                     </div>
 
 
-                    <div class="item ">
+                    <div id="item13" class="item">
                         <a class="item-link" href="img/portfolio/videos/totoro.mp4" type="video/mp4"
                             data-poster="img/portfolio/videos/thumbs/thumb1.png">
                             <!-- <img class="icon" src="img/video-play.png" alt="">  -->
@@ -115,7 +114,7 @@
 
                     </div>
 
-                    <div class="item ">
+                    <div id="item14" class="item">
                         <a class="item-link" href="img/portfolio/wall.jpg">
                             <img class="img-fluid" src="img/portfolio/wall.jpg" alt="">
                         </a>
@@ -150,60 +149,8 @@
             aria-pressed="false" role="button"></a>
         <ol class="indicator"></ol>
     </div>
-    <script>
-        var content = document.getElementById("content");
-        var i;
-        var speed;
-        var txt = "";
-        function startWriting(file) {
-            i = 0;
-            speed = 0;
-            content.innerHTML = "";
-            fetch(file).then(r => r.text()).then(text => {
-                txt = text;
-                typeWriter();
-                // console.log(txt);
-            });
-        }
-
-        function startWritingPortfolio(file) {
-            i = 0;
-            speed = 0;
-            content.innerHTML = "";
-            fetch(file).then(r => r.text()).then(text => {
-                txt = text;
-                typeWriter();
-                // console.log(txt);
-            });
-            drawPortfolio();
-        }
-
-        function typeWriter() {
-            if (i < txt.length) {
-                content.innerHTML += txt.charAt(i).replace("\n", "<br/>").replace(/\s/g, '&nbsp;');
-                i++;
-                setTimeout(typeWriter, speed);
-            }
-        }
-
-        function drawPortfolio() {
-            content.innerHTML += '';
-            var container = document.getElementById("container");
-            getDivsFromFile();
-
-        }
-
-        function getDivsFromFile() {
-            fetch('txt/portfolio.txt').then(r => r.text()).then(text => {
-                var divs = text.split("?");
-                divs.forEach(div => {
-                    container.innerHTML += div;
-                });
-            });
-        }
-
-    </script>
     <script src="js/blueimp-gallery.min.js"></script>
+    <script src="js/scripts.js"></script>
     <script>
         document.getElementById('links').onclick = function (event) {
             event = event || window.event
