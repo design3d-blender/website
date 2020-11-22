@@ -5,4 +5,5 @@ figlet -f slant Welcome
 | |/ |/ /  __/ / /__/ /_/ / / / / / /  __/
 |__/|__/\___/_/\___/\____/_/ /_/ /_/\___/
 
-[user@DESIGN3D ~]$
+[user@DESIGN3D ~]$ cd welcome
+[user@DESIGN3D ~/welcome]$

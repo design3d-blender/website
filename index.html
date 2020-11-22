@@ -12,14 +12,16 @@
 <body>
     <div class="page">
         <div class="navbar w3-padding-small w3-center w3-bar">
-            <button onclick="startWriting('txt/welcome.txt')" class="w3-button w3-blue-grey w3-border">Welcome</button>
-            <button onclick="startWriting('txt/skills.txt')" class="w3-button w3-blue-grey">Skills</button>
-            <button onclick="drawPortfolio('txt/portfolio.txt')" class="w3-button w3-blue-grey">3D Portfolio</button>
-            <button onclick="startWriting('txt/showcase.txt')" class="w3-button w3-blue-grey">3D Showcase</button>
-            <button onclick="startWriting('txt/contact.txt')" class="w3-button w3-blue-grey">Contact</button>
+            <button onclick="startWriting('txt/welcome.txt',true)"
+                class="w3-button w3-blue-grey w3-border">Welcome</button>
+            <button onclick="startWriting('txt/skills.txt',true)" class="w3-button w3-blue-grey">Skills</button>
+            <button onclick="drawPortfolio('txt/portfolio.txt',true)" class="w3-button w3-blue-grey">3D
+                Portfolio</button>
+            <button onclick="drawShowcase('txt/showcase.txt',true)" class="w3-button w3-blue-grey">3D Showcase</button>
+            <button onclick="startWriting('txt/contact.txt',true)" class="w3-button w3-blue-grey">Contact</button>
         </div>
         <div class="desktop w3-padding-large">
-            <div class="console w3-topbar w3-bottombar w3-leftbar w3-rightbar">
+            <div id="console" class="w3-topbar w3-bottombar w3-leftbar w3-rightbar">
                 <p>[user@DESIGN3D ~]$
                     <span id="content"></span>
                     <span id="cursor">█</span>
@@ -134,6 +136,7 @@
                     }, speed);
                 </script>
                 </p>
+                <canvas id="renderCanvas">Your browser does not support the canvas tag.</canvas>
             </div>
         </div>
     </div>
@@ -161,6 +164,9 @@
             blueimp.Gallery(links, options)
         }
     </script>
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+    <script src="https://code.jquery.com/pep/0.4.3/pep.js"></script>
 </body>
 </head>
 

@@ -1,2 +1,3 @@
 cd portfolio
 [user@DESIGN3D ~/portfolio]$ sxiv -t *.png
+click any image to enter "gallery mode"
