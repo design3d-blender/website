@@ -12,6 +12,9 @@ function startWriting(file, clear) {
         if (!!document.getElementById("renderCanvas")) {
             document.getElementById("renderCanvas").style.display = 'none';
         }
+        if (!!document.getElementById("slider")) {
+            document.getElementById("slider").style.display = 'none';
+        }
         // if(!!document.getElementById("showcase")){
         //     document.getElementById("showcase").remove();
         // }
@@ -84,32 +87,7 @@ function drawShowcase(file, clear) {
                 isModelLoaded = true;
             }
         }
-        // element = document.getElementById("modelo");
-        // foo = window.getComputedStyle(element, null);
-        // if (foo.getPropertyValue("display") == 'none') {
-        //     element.style.display = 'block';
-        // }
     }, 300);
-}
-
-function createScene(engine) {
-    var scene = new BABYLON.Scene(engine);
-
-    // Create a default skybox with an environment.
-    // var hdrTexture = BABYLON.CubeTexture.CreateFromPrefilteredData("textures/environment.dds", scene);
-    // var currentSkybox = scene.createDefaultSkybox(hdrTexture, true);
-
-    // Append glTF model to scene.
-    BABYLON.SceneLoader.Append("model/", "scene.glb", scene, function (scene) {
-        // Create a default arc rotate camera and light.
-        scene.createDefaultCameraOrLight(true, true, true);
-
-        // The default camera looks at the back of the asset.
-        // Rotate the camera by 180 degrees to the front of the asset.
-        scene.activeCamera.alpha += Math.PI;
-    });
-
-    return scene;
 }
 
 function start3D() {
@@ -120,7 +98,7 @@ function start3D() {
         var hdrTexture = new BABYLON.CubeTexture.CreateFromPrefilteredData("img/hdr/environment.env", scene);
         scene.environmentTexture = hdrTexture;
         var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 10, new BABYLON.Vector3(0, 0, 0), scene);
-        scene.clearColor = new BABYLON.Color4(0,0,0,0.0000000000000001);
+        scene.clearColor = new BABYLON.Color4(0, 0, 0, 0.0000000000000001);
         // Positions the camera overwriting alpha, beta, radius
         camera.setPosition(new BABYLON.Vector3(0, 0, 20));
         // This attaches the camera to the canvas
@@ -133,5 +111,25 @@ function start3D() {
         window.addEventListener("resize", function () {
             engine.resize();
         });
+
+        var animation = scene.getAnimationGroupByName("Animation");
+        animation.pause();
+
+        var slider = document.createElement("input");
+        slider.type = 'range';
+        slider.id = 'slider';
+        slider.min = 0;
+        slider.max = 1.8;
+        slider.step = 0.01;
+        slider.value = 0;
+
+        document.getElementById('console').appendChild(slider);
+
+        slider.oninput = function () {
+            animation.goToFrame(this.value);
+            console.log(this.value);
+        }
+
+        return scene;
     });
 }

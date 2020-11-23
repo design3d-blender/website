@@ -25,6 +25,20 @@
                 <p>[user@DESIGN3D ~]$
                     <span id="content"></span>
                     <span id="cursor">█</span>
+                    <script>
+                        var cursor = true;
+                        var speed = 500;
+                        setInterval(() => {
+                            if (cursor) {
+                                document.getElementById('cursor').style.opacity = 0;
+                                cursor = false;
+                            } else {
+                                document.getElementById('cursor').style.opacity = 1;
+                                cursor = true;
+                            }
+                        }, speed);
+                        </script>
+                </p>
                 <div class="container" id="links">
                     <div id="item1" class="item">
                         <a class="item-link" href="img/portfolio/bender.jpg">
@@ -122,20 +136,6 @@
                         </a>
                     </div>
                 </div>
-                <script>
-                    var cursor = true;
-                    var speed = 500;
-                    setInterval(() => {
-                        if (cursor) {
-                            document.getElementById('cursor').style.opacity = 0;
-                            cursor = false;
-                        } else {
-                            document.getElementById('cursor').style.opacity = 1;
-                            cursor = true;
-                        }
-                    }, speed);
-                </script>
-                </p>
                 <canvas id="renderCanvas">Your browser does not support the canvas tag.</canvas>
             </div>
         </div>
