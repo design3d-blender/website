@@ -11,132 +11,140 @@
 
 <body>
     <div class="page">
-        <div class="navbar w3-padding-small w3-center w3-bar">
-            <button onclick="startWriting('txt/welcome.txt',true)"
-                class="w3-button w3-blue-grey w3-border">Welcome</button>
-            <button onclick="startWriting('txt/skills.txt',true)" class="w3-button w3-blue-grey">Skills</button>
-            <button onclick="drawPortfolio('txt/portfolio.txt',true)" class="w3-button w3-blue-grey">3D
-                Portfolio</button>
-            <button onclick="drawShowcase('txt/showcase.txt',true)" class="w3-button w3-blue-grey">3D Showcase</button>
-            <button onclick="startWriting('txt/contact.txt',true)" class="w3-button w3-blue-grey">Contact</button>
-        </div>
         <div class="desktop w3-padding-large">
-            <div id="console" class="w3-topbar w3-bottombar w3-leftbar w3-rightbar">
-                <p>[user@DESIGN3D ~]$
-                    <span id="content"></span>
-                    <span id="cursor">█</span>
-                    <script>
-                        var cursor = true;
-                        var speed = 500;
-                        setInterval(() => {
-                            if (cursor) {
-                                document.getElementById('cursor').style.opacity = 0;
-                                cursor = false;
-                            } else {
-                                document.getElementById('cursor').style.opacity = 1;
-                                cursor = true;
-                            }
-                        }, speed);
+            <div id="window" class="w3-topbar w3-bottombar w3-leftbar w3-rightbar">
+                <div class="navbar w3-padding-small w3-center w3-bar">
+                    <button onclick="startWriting('txt/welcome.txt',true)"
+                        class="button w3-border">Welcome</button>
+                    <button onclick="startWriting('txt/skills.txt',true)" class="button">Skills</button>
+                    <button onclick="drawPortfolio('txt/portfolio.txt',true)" class="button">3D
+                        Portfolio</button>
+                    <button onclick="drawShowcase('txt/showcase.txt',true)" class="button">3D
+                        Showcase</button>
+                    <button onclick="startWriting('txt/contact.txt',true)"
+                        class="button">Contact</button>
+                </div>
+                <div id="console">
+                    <p><span class="bracket">[</span><span class="user">user</span><span class="at">@</span><span
+                            class="design3d">DESIGN3D </span><span class="directory">~</span><span
+                            class="bracket">]</span>$
+                        <span id="content"></span>
+                        <span id="cursor">█</span>
+                        <script>
+                            var cursor = true;
+                            var speed = 500;
+                            setInterval(() => {
+                                if (cursor) {
+                                    document.getElementById('cursor').style.opacity = 0;
+                                    cursor = false;
+                                } else {
+                                    document.getElementById('cursor').style.opacity = 1;
+                                    cursor = true;
+                                }
+                            }, speed);
                         </script>
-                </p>
-                <div class="container" id="links">
-                    <div id="item1" class="item">
-                        <a class="item-link" href="img/portfolio/bender.jpg">
-                            <img class="img-fluid thumbs" src="img/portfolio/bender.jpg" alt="">
-                        </a>
-                    </div>
+                    </p>
+                    <div class="container" id="links">
+                        <div id="item1" class="item">
+                            <a class="item-link" href="img/portfolio/bender.jpg">
+                                <img class="img-fluid thumbs" src="img/portfolio/bender.jpg" alt="">
+                            </a>
+                        </div>
 
-                    <div id="item2" class="item">
-                        <a class="item-link" href="img/portfolio/sun.jpg">
-                            <img class="img-fluid thumbs" src="img/portfolio/sun.jpg" alt="">
-                        </a>
-                    </div>
+                        <div id="item2" class="item">
+                            <a class="item-link" href="img/portfolio/sun.jpg">
+                                <img class="img-fluid thumbs" src="img/portfolio/sun.jpg" alt="">
+                            </a>
+                        </div>
 
-                    <div id="item3" class="item">
-                        <a class="item-link" href="img/portfolio/wall.jpg">
-                            <img class="img-fluid thumbs" src="img/portfolio/wall.jpg" alt="">
-                        </a>
-                    </div>
+                        <div id="item3" class="item">
+                            <a class="item-link" href="img/portfolio/wall.jpg">
+                                <img class="img-fluid thumbs" src="img/portfolio/wall.jpg" alt="">
+                            </a>
+                        </div>
 
-                    <!-- <div class="item">
+                        <!-- <div class="item">
                             <a class="item-link"  href="img/portfolio/pan.jpg">
                                 <img class="img-fluid thumbs" src="img/portfolio/pan.jpg" alt="">
                             </a>
                         </div> -->
 
-                    <div id="item4" class="item">
-                        <a class="item-link" href="img/portfolio/bantu2.png">
-                            <img class="img-fluid thumbs" src="img/portfolio/bantu2.png" alt="">
-                        </a>
+                        <div id="item4" class="item">
+                            <a class="item-link" href="img/portfolio/bantu2.png">
+                                <img class="img-fluid thumbs" src="img/portfolio/bantu2.png" alt="">
+                            </a>
+                        </div>
+
+                        <div id="item5" class="item">
+                            <a class="item-link" href="img/portfolio/bantu3.png">
+                                <img class="img-fluid" src="img/portfolio/bantu3.png" alt="">
+                            </a>
+                        </div>
+
+                        <div id="item6" class="item">
+                            <a class="item-link" href="img/portfolio/bantu4.png">
+                                <img class="img-fluid" src="img/portfolio/bantu4.png" alt="">
+                            </a>
+                        </div>
+
+                        <div id="item7" class="item">
+                            <a class="item-link" href="img/portfolio/videos/bantu5.mp4" type="video/mp4"
+                                data-poster="img/portfolio/videos/thumbs/thumb2.png">
+                                <!-- <img class="icon" src="img/video-play.png" alt="">  -->
+                                <img class="img-fluid" src="img/portfolio/videos/thumbs/thumb2.png" alt="">
+                            </a>
+                        </div>
+
+                        <div id="item8" id="item1" class="item">
+                            <a class="item-link" href="img/portfolio/ger1.jpg">
+                                <img class="img-fluid" src="img/portfolio/ger1.jpg" alt="">
+                            </a>
+                        </div>
+
+                        <div id="item9" class="item">
+                            <a class="item-link" href="img/portfolio/ger2.jpg">
+                                <img class="img-fluid" src="img/portfolio/ger2.jpg" alt="">
+                            </a>
+                        </div>
+
+                        <div id="item10" class="item">
+                            <a class="item-link" href="img/portfolio/campo.jpg">
+                                <img class="img-fluid" src="img/portfolio/campo.jpg" alt="">
+                            </a>
+                        </div>
+
+                        <div id="item11" class="item">
+                            <a class="item-link" href="img/portfolio/eva.jpg">
+                                <img class="img-fluid" src="img/portfolio/eva.jpg" alt="">
+                            </a>
+                        </div>
+
+                        <div id="item12" class="item">
+                            <a class="item-link" href="img/portfolio/transistor.jpg">
+                                <img class="img-fluid" src="img/portfolio/transistor.jpg" alt="">
+                            </a>
+                        </div>
+
+
+                        <div id="item13" class="item">
+                            <a class="item-link" href="img/portfolio/videos/totoro.mp4" type="video/mp4"
+                                data-poster="img/portfolio/videos/thumbs/thumb1.png">
+                                <!-- <img class="icon" src="img/video-play.png" alt="">  -->
+                                <img class="img-fluid" src="img/portfolio/videos/thumbs/thumb1.png" alt="">
+                            </a>
+
+                        </div>
+
+                        <div id="item14" class="item">
+                            <a class="item-link" href="img/portfolio/wall.jpg">
+                                <img class="img-fluid" src="img/portfolio/wall.jpg" alt="">
+                            </a>
+                        </div>
                     </div>
-
-                    <div id="item5" class="item">
-                        <a class="item-link" href="img/portfolio/bantu3.png">
-                            <img class="img-fluid" src="img/portfolio/bantu3.png" alt="">
-                        </a>
-                    </div>
-
-                    <div id="item6" class="item">
-                        <a class="item-link" href="img/portfolio/bantu4.png">
-                            <img class="img-fluid" src="img/portfolio/bantu4.png" alt="">
-                        </a>
-                    </div>
-
-                    <div id="item7" class="item">
-                        <a class="item-link" href="img/portfolio/videos/bantu5.mp4" type="video/mp4"
-                            data-poster="img/portfolio/videos/thumbs/thumb2.png">
-                            <!-- <img class="icon" src="img/video-play.png" alt="">  -->
-                            <img class="img-fluid" src="img/portfolio/videos/thumbs/thumb2.png" alt="">
-                        </a>
-                    </div>
-
-                    <div id="item8" id="item1" class="item">
-                        <a class="item-link" href="img/portfolio/ger1.jpg">
-                            <img class="img-fluid" src="img/portfolio/ger1.jpg" alt="">
-                        </a>
-                    </div>
-
-                    <div id="item9" class="item">
-                        <a class="item-link" href="img/portfolio/ger2.jpg">
-                            <img class="img-fluid" src="img/portfolio/ger2.jpg" alt="">
-                        </a>
-                    </div>
-
-                    <div id="item10" class="item">
-                        <a class="item-link" href="img/portfolio/campo.jpg">
-                            <img class="img-fluid" src="img/portfolio/campo.jpg" alt="">
-                        </a>
-                    </div>
-
-                    <div id="item11" class="item">
-                        <a class="item-link" href="img/portfolio/eva.jpg">
-                            <img class="img-fluid" src="img/portfolio/eva.jpg" alt="">
-                        </a>
-                    </div>
-
-                    <div id="item12" class="item">
-                        <a class="item-link" href="img/portfolio/transistor.jpg">
-                            <img class="img-fluid" src="img/portfolio/transistor.jpg" alt="">
-                        </a>
-                    </div>
-
-
-                    <div id="item13" class="item">
-                        <a class="item-link" href="img/portfolio/videos/totoro.mp4" type="video/mp4"
-                            data-poster="img/portfolio/videos/thumbs/thumb1.png">
-                            <!-- <img class="icon" src="img/video-play.png" alt="">  -->
-                            <img class="img-fluid" src="img/portfolio/videos/thumbs/thumb1.png" alt="">
-                        </a>
-
-                    </div>
-
-                    <div id="item14" class="item">
-                        <a class="item-link" href="img/portfolio/wall.jpg">
-                            <img class="img-fluid" src="img/portfolio/wall.jpg" alt="">
-                        </a>
+                    <div id="canvas3D">
+                        <canvas id="renderCanvas">Your browser does not support the canvas tag.</canvas>
                     </div>
                 </div>
-                <canvas id="renderCanvas">Your browser does not support the canvas tag.</canvas>
             </div>
         </div>
     </div>

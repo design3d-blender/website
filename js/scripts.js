@@ -15,6 +15,9 @@ function startWriting(file, clear) {
         if (!!document.getElementById("slider")) {
             document.getElementById("slider").style.display = 'none';
         }
+        if (!!document.getElementById("canvas3D")) {
+            document.getElementById("canvas3D").style.display = 'none';
+        }
         // if(!!document.getElementById("showcase")){
         //     document.getElementById("showcase").remove();
         // }
@@ -40,7 +43,21 @@ function startWriting(file, clear) {
 
 function typeWriter() {
     if (i < txt.length) {
-        content.innerHTML += txt.charAt(i).replace("\n", "<br/>").replace(/\s/g, '&nbsp;');
+        if (txt.charAt(i) == '?') {
+            i++;
+            if (txt.charAt(i) == ' ') {
+                content.innerHTML += '<span class="bracket">[</span><span class="user">user</span><span class="at">@</span><span class="design3d">DESIGN3D </span><span class="directory">~</span><span class="bracket">]</span>$ ';
+            } else {
+                let directory ="";
+                while(txt.charAt(i) !== ' ' && i < txt.length){
+                    directory += txt.charAt(i);
+                    i++;
+                }
+                content.innerHTML += '<span class="bracket">[</span><span class="user">user</span><span class="at">@</span><span class="design3d">DESIGN3D </span><span class="directory">~/'+directory+'</span><span class="bracket">]</span>$ ';                
+            }
+        } else {
+            content.innerHTML += txt.charAt(i).replace("\n", "<br/>").replace(/\s/g, '&nbsp;');
+        }
         i++;
         setTimeout(typeWriter, speed);
     }
@@ -82,6 +99,7 @@ function drawShowcase(file, clear) {
         var foo = window.getComputedStyle(element, null);
         if (foo.getPropertyValue("display") == 'none') {
             element.style.display = 'block';
+            document.getElementById("canvas3D").style.display = 'block';
             if (!isModelLoaded) {
                 start3D();
                 isModelLoaded = true;
@@ -123,7 +141,7 @@ function start3D() {
         slider.step = 0.01;
         slider.value = 0;
 
-        document.getElementById('console').appendChild(slider);
+        document.getElementById('canvas3D').appendChild(slider);
 
         slider.oninput = function () {
             animation.goToFrame(this.value);
