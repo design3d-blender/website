@@ -6,28 +6,28 @@ body {
 .page {
     height: 100vh;
     width: 100%;
-    display:flex;
-    flex-direction:column;
 }
 
-.navbar{
+#navbar{
     display:block;
     background-color: rgb(41, 41, 41);
     height: 3%;
-    min-height: 3em;
+    min-height: 2em;
+    font-family: monospace;
+    flex: 1;
 }
 
 .desktop {
-    height: 95.5%;
+    height: 100%;
     margin: 0;
     background-image: url(/img/flower.jpg);
-    display: flex;
-    flex: 1;
 }
 
 #window {
     height: 100%;
     width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .button{
@@ -54,6 +54,8 @@ body {
     height: 95vh;
     width: 100%;
     margin: 0;
+    display: block;
+    flex: 100;
     
 }
 #console p{
@@ -148,11 +150,19 @@ body {
     #console p {
         font-size: 1rem;
     }
+    #navbar {
+        font-size: 1rem;
+        flex: 1.5;
+    }
 }
   
 @media screen and (max-width: 600px) {
     #console p {
         font-size: 0.7rem;
+    }
+    #navbar {
+        font-size: 0.45rem;
+        flex: 2.5;
     }
 }
 
