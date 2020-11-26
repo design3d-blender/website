@@ -8,16 +8,21 @@ figlet -f slant Welcome
 ? cd welcome
 ?welcome cat welcome.txt
 
-Hi!, welcome to my portfolio page. My name is Juan, developer by day, 
-3D artist by night. In here you will find information about my works
-aswell as contact links if you wish to contact me.
+Hi! 
+
+Welcome to my portfolio page. My name is Juan, developer
+by day, 3D artist by night. In here you will find some
+information about my works as well as contact details in 
+case you wish to contact me.
 
 ?welcome cd instructions
-?welcome/instructions cat instructions.txt
+?welcome/instructions cat .instructions
 Use the buttons on the bar on top to navigate the website.
 
-Welcome: Display the welcome message
-Skills: List of my skills and knowledge
-3D Porfolio: A collection of some of my 3D works (images and videos)
-3D Showcase: One of my 3D models to play around with using Babylon.js
-Contact: Contant Info
+#Welcome:# Display the welcome message.
+#Skills:# List of my skills and knowledge.
+#Porfolio:# A collection of some of my 3D works.
+#Showcase:# One of my 3D models to play around with.
+#Contact:# Contant Info.
+
+HINT: Landscape mode is prettier :P

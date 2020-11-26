@@ -3,7 +3,7 @@ var i;
 var speed;
 var txt = "";
 var isModelLoaded = false;
-
+var engine;
 function startWriting(file, clear) {
     i = 0;
     speed = 0;
@@ -38,27 +38,39 @@ function startWriting(file, clear) {
 }
 
 function typeWriter() {
+    //TODO this could be a switch-case style block, if i add more thinks I should rewrite it.
     if (i < txt.length) {
         if (txt.charAt(i) == '?') {
             i++;
             if (txt.charAt(i) == ' ') {
                 content.innerHTML += '<span class="bracket">[</span><span class="user">user</span><span class="at">@</span><span class="design3d">DESIGN3D </span><span class="directory">~</span><span class="bracket">]</span>$ ';
             } else {
-                let directory ="";
-                while(txt.charAt(i) !== ' ' && i < txt.length){
+                let directory = "";
+                while (txt.charAt(i) !== ' ' && i < txt.length) {
                     directory += txt.charAt(i);
                     i++;
                 }
-                content.innerHTML += '<span class="bracket">[</span><span class="user">user</span><span class="at">@</span><span class="design3d">DESIGN3D </span><span class="directory">~/'+directory+'</span><span class="bracket">]</span>$ ';                
+                content.innerHTML += '<span class="bracket">[</span><span class="user">user</span><span class="at">@</span><span class="design3d">DESIGN3D </span><span class="directory">~/' + directory + '</span><span class="bracket">]</span>$ ';
             }
         } else {
-            if(txt.charAt(i) == '%'){
+            if (txt.charAt(i) == '%') {
                 i++;
-                if(txt.charAt(i) == '1'){
+                if (txt.charAt(i) == '1') {
                     content.innerHTML += '<a class="links" href="https://github.com/design3d-blender">Click Here!</a>';
                     i++;
-                }else{
+                } else {
                     content.innerHTML += '<a class="links" href="https://www.linkedin.com/in/juan-luis-mu%C3%B1oz-ioannidis/">Click Here!</a>';
+                    i++;
+                }
+            } else {
+                if (txt.charAt(i) == '#') {
+                    i++;
+                    let bold = "";
+                    while (txt.charAt(i) !== '#' && i < txt.length) {
+                        bold += txt.charAt(i);
+                        i++;
+                    }
+                    content.innerHTML += '<span class="bold">'+ bold +'</span>';
                     i++;
                 }
             }
@@ -109,16 +121,28 @@ function drawShowcase(file, clear) {
             if (!isModelLoaded) {
                 start3D();
                 isModelLoaded = true;
-            }else{
+            } else {
                 document.getElementById("slider").style.display = 'block';
+                resize3D();
             }
         }
     }, 300);
 }
 
+function resize3D(){
+    engine.resize();
+}
+
+window.addEventListener("orientationchange", function () {
+    if(isModelLoaded){
+        // resize3d(true);
+    }
+    // alert(window.orientation);
+}, false);
+
 function start3D() {
     const canvas = document.getElementById("renderCanvas"); // Get the canvas element
-    const engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engine
+    engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engine
     BABYLON.SceneLoader.Load("model/", "scene.glb", engine, function (scene) {
         var hdrTexture = new BABYLON.CubeTexture.CreateFromPrefilteredData("img/hdr/environment.env", scene);
         scene.environmentTexture = hdrTexture;

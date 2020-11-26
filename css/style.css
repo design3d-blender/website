@@ -185,7 +185,6 @@ body {
     width: 100%;
     margin: 0;
     display: block;
-    overflow-wrap: normal;
     flex: 100;
     
 }
@@ -260,9 +259,11 @@ body {
 }
 
 #slider{
+    position: absolute;
     width: 100%;
     text-align: center;
     margin: 0;
+    top: 90%;
 }
 
 #slider input{
@@ -271,6 +272,10 @@ body {
 
 .links{
     color: rgb(0, 183, 255);
+}
+
+.bold{
+    font-weight: bold;
 }
 
 @media screen and (min-width: 1101px) {
@@ -360,3 +365,30 @@ body {
     }
 
 }
+
+#slider input {
+  -webkit-appearance: none;
+  width: 80%;
+  height: 1em;
+  background: #5a5a5a;
+  outline: none;
+  opacity: 1;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  border-radius: 1rem;
+}
+  
+/* #slider input:hover {
+  opacity: 1;
+} */
+
+#slider input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #b1afaf;
+  cursor: pointer;
+  border-radius: 0.2rem;
+}
+
