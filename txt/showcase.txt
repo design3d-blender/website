@@ -1,1 +1,2 @@
-Showcase message
+./showcase
+HINT: move the slider below and see what happens :D

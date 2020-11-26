@@ -18,9 +18,6 @@ function startWriting(file, clear) {
         if (!!document.getElementById("canvas3D")) {
             document.getElementById("canvas3D").style.display = 'none';
         }
-        // if(!!document.getElementById("showcase")){
-        //     document.getElementById("showcase").remove();
-        // }
         var container = document.getElementById("links");
         var foo = window.getComputedStyle(container, null);
         if (foo.getPropertyValue("display") == 'block') {
@@ -37,7 +34,6 @@ function startWriting(file, clear) {
     fetch(file).then(r => r.text()).then(text => {
         txt = text;
         typeWriter();
-        // console.log(txt);
     });
 }
 
@@ -56,6 +52,16 @@ function typeWriter() {
                 content.innerHTML += '<span class="bracket">[</span><span class="user">user</span><span class="at">@</span><span class="design3d">DESIGN3D </span><span class="directory">~/'+directory+'</span><span class="bracket">]</span>$ ';                
             }
         } else {
+            if(txt.charAt(i) == '%'){
+                i++;
+                if(txt.charAt(i) == '1'){
+                    content.innerHTML += '<a class="links" href="https://github.com/design3d-blender">Click Here!</a>';
+                    i++;
+                }else{
+                    content.innerHTML += '<a class="links" href="https://www.linkedin.com/in/juan-luis-mu%C3%B1oz-ioannidis/">Click Here!</a>';
+                    i++;
+                }
+            }
             content.innerHTML += txt.charAt(i).replace("\n", "<br/>").replace(/\s/g, '&nbsp;');
         }
         i++;
@@ -103,6 +109,8 @@ function drawShowcase(file, clear) {
             if (!isModelLoaded) {
                 start3D();
                 isModelLoaded = true;
+            }else{
+                document.getElementById("slider").style.display = 'block';
             }
         }
     }, 300);
@@ -111,7 +119,6 @@ function drawShowcase(file, clear) {
 function start3D() {
     const canvas = document.getElementById("renderCanvas"); // Get the canvas element
     const engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engine
-    // Add your code here matching the playground format
     BABYLON.SceneLoader.Load("model/", "scene.glb", engine, function (scene) {
         var hdrTexture = new BABYLON.CubeTexture.CreateFromPrefilteredData("img/hdr/environment.env", scene);
         scene.environmentTexture = hdrTexture;
@@ -132,16 +139,17 @@ function start3D() {
 
         var animation = scene.getAnimationGroupByName("Animation");
         animation.pause();
-
+        var div = document.createElement("div");
+        div.id = 'slider';
         var slider = document.createElement("input");
         slider.type = 'range';
-        slider.id = 'slider';
         slider.min = 0;
         slider.max = 1.8;
         slider.step = 0.01;
         slider.value = 0;
 
-        document.getElementById('canvas3D').appendChild(slider);
+        document.getElementById('canvas3D').appendChild(div);
+        document.getElementById('slider').appendChild(slider);
 
         slider.oninput = function () {
             animation.goToFrame(this.value);

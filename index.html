@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/profile.png">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="css/blueimp-gallery.min.css" />
@@ -11,18 +12,45 @@
 
 <body>
     <div class="page">
-        <div class="desktop w3-padding-large">
-            <div id="window" class="w3-topbar w3-bottombar w3-leftbar w3-rightbar">
-                <div id="navbar" class="w3-padding-small w3-center w3-bar">
-                    <button onclick="startWriting('txt/welcome.txt',true)"
-                        class="button w3-border">Welcome</button>
-                    <button onclick="startWriting('txt/skills.txt',true)" class="button">Skills</button>
-                    <button onclick="drawPortfolio('txt/portfolio.txt',true)" class="button">3D
-                        Portfolio</button>
-                    <button onclick="drawShowcase('txt/showcase.txt',true)" class="button">3D
-                        Showcase</button>
-                    <button onclick="startWriting('txt/contact.txt',true)"
-                        class="button">Contact</button>
+        <div id="topbar" class="navbar w3-padding-small w3-center w3-bar">
+            <button onclick="startWriting('txt/welcome.txt',true)" class="button w3-border">Welcome</button>
+            <button onclick="startWriting('txt/skills.txt',true)" class="button">Skills</button>
+            <button onclick="drawPortfolio('txt/portfolio.txt',true)" class="button">3D
+                Portfolio</button>
+            <button onclick="drawShowcase('txt/showcase.txt',true)" class="button">3D
+                Showcase</button>
+            <button onclick="startWriting('txt/contact.txt',true)" class="button">Contact</button>
+        </div>
+        <div class="desktop">
+            <div id="window">
+                <div id="consolebar" class="navbar w3-padding-small w3-center w3-bar">
+                    <div class="profile">
+                        <img src="img/profile.png">
+                        </img>
+                    </div>
+                    <div class="buttons">
+                        <button onclick="startWriting('txt/welcome.txt',true)" class="button w3-border">Welcome</button>
+                        <button onclick="startWriting('txt/skills.txt',true)" class="button">Skills</button>
+                        <button onclick="drawPortfolio('txt/portfolio.txt',true)" class="button">3D
+                            Portfolio</button>
+                        <button onclick="drawShowcase('txt/showcase.txt',true)" class="button">3D
+                            Showcase</button>
+                        <button onclick="startWriting('txt/contact.txt',true)" class="button">Contact</button>
+                    </div>
+                    <div id="windowButtons">
+                        <div class="close">
+                            <a class="closebutton" href="#"><span><strong>x</strong></span></a>
+                            <!-- close button link -->
+                          </div>
+                          <div class="minimize">
+                            <a class="minimizebutton" href="#"><span><strong>&ndash;</strong></span></a>
+                            <!-- minimize button link -->
+                          </div>
+                          <div class="zoom">
+                            <a class="zoombutton" href="#"><span><strong>+</strong></span></a>
+                            <!-- zoom button link -->
+                          </div>
+                    </div>
                 </div>
                 <div id="console">
                     <p><span class="bracket">[</span><span class="user">user</span><span class="at">@</span><span

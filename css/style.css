@@ -4,23 +4,49 @@ body {
 }
 
 .page {
-    height: 100vh;
+    height: 100%;
     width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
-#navbar{
-    display:block;
-    background-color: rgb(41, 41, 41);
+.navbar{
+    display:flex;
+    width: 100%;
+    background-image: linear-gradient(rgb(41, 41, 41), rgb(44, 44, 44));
+    /* background-color: rgb(41, 41, 41); */
+    border-bottom: 0.5px solid rgb(5, 5, 5);
     height: 3%;
-    min-height: 2em;
+    min-height: 2.5em;
     font-family: monospace;
+    font-weight: normal;
+    justify-content: space-between;
     flex: 1;
+    margin: 0;
+}
+
+.profile{
+    display: flex;
+    flex: 1;
+    height: 100%;
+    max-width: 4%;
+    /* align-self: flex-start; */
+}
+.profile img{
+    height: 100%;
+    width: auto;
+    border-radius: 50%;
+    border: 1.2px solid rgb(17, 17, 17);
+
 }
 
 .desktop {
     height: 100%;
     margin: 0;
+    padding: 1%;
     background-image: url(/img/flower.jpg);
+    background-size: cover;
+    flex: 100;
 }
 
 #window {
@@ -28,16 +54,28 @@ body {
     width: 100%;
     display: flex;
     flex-direction: column;
+    border: 4px solid rgb(173, 173, 173);
+}
+.buttons{
+    height: 100%;
+    display: flex;
+    flex: 3;
+    justify-content: center;
+    /* align-items: center; */
 }
 
 .button{
-    text-align: center;
     height: 100%;
     outline: none;
     background-color: rgba(255, 255, 255, 0);
     color: rgb(245, 245, 245);
     border: 2px solid #999999; /* Green */
     border-radius: 8px;
+    display: flex;
+    
+    align-items: center;
+    padding: 0px 3px;
+    margin: 1px 3px;
 }
 
 .button:hover{
@@ -48,19 +86,113 @@ body {
     border-radius: 8px;
 }
 
+.windowButtons {
+  height: 100%;
+  display: flex;
+  /* align-self: flex-end; */
+  flex: 1;
+}
+  
+.windowButtons:hover a {
+  visibility: visible;
+}
+ 
+.close {
+  background: #ff5c5c;
+  font-size: 9pt;
+  line-height: 50%;
+  width: 11px;
+  height: 11px;
+  border: 1px solid #e33e41;
+  border-radius: 50%;
+  display: inline-block;
+}
+ 
+.close:active {
+  background: #c14645;
+  border: 1px solid #b03537;
+}
+
+.close:active .closebutton {
+  color: #4e0002;
+}
+
+.closebutton {
+  color: #820005;
+  visibility: hidden;
+  cursor: default;
+}
+
+.minimize {
+  background: #ffbd4c;
+  font-size: 9pt;
+  line-height: 50%;
+  margin-left: 4px;
+  width: 11px;
+  height: 11px;
+  border: 1px solid #e09e3e;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.minimize:active {
+  background: #c08e38;
+  border: 1px solid #af7c33;
+}
+
+.minimize:active .minimizebutton {
+  color: #5a2607;
+}
+
+.minimizebutton {
+  color: #9a5518;
+  visibility: hidden;
+  cursor: default;
+}
+
+.zoom {
+  background: #00ca56;
+  font-size: 9pt;
+  line-height: 50%;
+  margin-left: 6px;
+  width: 11px;
+  height: 11px;
+  border: 1px solid #14ae46;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.zoom:active {
+  background: #029740;
+  border: 1px solid #128435;
+}
+
+.zoom:active .zoombutton {
+  color: #003107;
+}
+
+.zoombutton {
+  color: #006519;
+  visibility: hidden;
+  cursor: default;
+}
+
 #console {
     background-color: rgba(33, 39, 53, 0.849);
     overflow: auto;
-    height: 95vh;
+    overflow-wrap: normal;
+    height: 90%;
     width: 100%;
     margin: 0;
     display: block;
+    overflow-wrap: normal;
     flex: 100;
     
 }
 #console p{
     color: white;
     font-family: monospace;
+    margin: 0 3px;
 }
 
 .bracket{
@@ -129,6 +261,16 @@ body {
 
 #slider{
     width: 100%;
+    text-align: center;
+    margin: 0;
+}
+
+#slider input{
+    width: 80%;
+}
+
+.links{
+    color: rgb(0, 183, 255);
 }
 
 @media screen and (min-width: 1101px) {
@@ -137,6 +279,12 @@ body {
         width: 13vw;
         padding: 1vh;
     }
+    .navbar {
+        min-height: 3em;
+    }
+    #topbar{
+        display: none;
+    }
 }
   
 @media screen and (max-width: 1100px) {
@@ -144,25 +292,71 @@ body {
         height: 32%;
         width: 32%;
     }
+    #topbar{
+        display: none;
+    }
 }
 
 @media screen and (min-width: 601px) {
     #console p {
-        font-size: 1rem;
+        font-size: 0.95rem;
     }
-    #navbar {
+    .navbar {
         font-size: 1rem;
         flex: 1.5;
+    }
+    #topbar{
+        display: none;
     }
 }
   
 @media screen and (max-width: 600px) {
     #console p {
-        font-size: 0.7rem;
+        font-size: 0.9rem;
     }
-    #navbar {
-        font-size: 0.45rem;
-        flex: 2.5;
+    #consolebar {
+        display: none;
+    }
+    #topbar{
+        display: flex;
+        min-height: 10%;
+        flex: 1;
+    }
+    .desktop{
+        padding: 0;
+        height: 90%;
+    }
+    .profile{
+        display: none;
     }
 }
 
+
+@media screen and (max-width: 500px) {
+    #console p {
+        font-size: 0.7rem;
+    }
+    #consolebar {
+        display: none;
+    }
+    #window {
+        border: none;
+    }
+    #topbar{
+        display: flex;
+        flex: 1;
+        min-height: 4%;
+        font-size: 0.5em;
+    }
+    .desktop{
+        padding: 0;
+        height: 96%;
+    }
+    .profile{
+        display: none;
+    }
+    .button{
+        padding: 5px 3px;
+    }
+
+}
