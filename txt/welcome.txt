@@ -22,7 +22,8 @@ Use the buttons on the bar on top to navigate the website.
 #Welcome:# Display the welcome message.
 #Skills:# List of my skills and knowledge.
 #Porfolio:# A collection of some of my 3D works.
-#Showcase:# One of my 3D models to play around with.
+#Showcase:# One of my 3D models to play around with. 
+        └── desktop only
 #Contact:# Contant Info.
 
 HINT: Landscape mode is prettier :P

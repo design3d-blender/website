@@ -56,10 +56,10 @@ function typeWriter() {
             if (txt.charAt(i) == '%') {
                 i++;
                 if (txt.charAt(i) == '1') {
-                    content.innerHTML += '<a class="links" href="https://github.com/design3d-blender">Click Here!</a>';
+                    content.innerHTML += '<a class="links" target="_blank" href="https://github.com/design3d-blender">Click Here!</a>';
                     i++;
                 } else {
-                    content.innerHTML += '<a class="links" href="https://www.linkedin.com/in/juan-luis-mu%C3%B1oz-ioannidis/">Click Here!</a>';
+                    content.innerHTML += '<a class="links" target="_blank" href="https://www.linkedin.com/in/juan-luis-mu%C3%B1oz-ioannidis/">Click Here!</a>';
                     i++;
                 }
             } else {
@@ -123,19 +123,15 @@ function drawShowcase(file, clear) {
                 isModelLoaded = true;
             } else {
                 document.getElementById("slider").style.display = 'block';
-                resize3D();
+                engine.resize();
             }
         }
     }, 300);
 }
 
-function resize3D(){
-    engine.resize();
-}
-
 window.addEventListener("orientationchange", function () {
     if(isModelLoaded){
-        // resize3d(true);
+        engine.resize();
     }
     // alert(window.orientation);
 }, false);
