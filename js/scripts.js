@@ -139,7 +139,7 @@ window.addEventListener("orientationchange", function () {
 function start3D() {
     const canvas = document.getElementById("renderCanvas"); // Get the canvas element
     engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engine
-    BABYLON.SceneLoader.Load("model/", "scene.glb", engine, function (scene) {
+    BABYLON.SceneLoader.Load("http://104.248.60.208/model/", "scene.glb", engine, function (scene) {
         var hdrTexture = new BABYLON.CubeTexture.CreateFromPrefilteredData("img/hdr/environment.env", scene);
         scene.environmentTexture = hdrTexture;
         var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 10, new BABYLON.Vector3(0, 0, 0), scene);
