@@ -45,7 +45,7 @@ body {
     height: 100%;
     margin: 0;
     padding: 1%;
-    background-image: url(/img/flower.jpg);
+    background-image: url(../img/flower.jpg);
     background-size: cover;
     flex: 100;
 }
