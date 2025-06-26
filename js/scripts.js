@@ -164,8 +164,8 @@ function start3D() {
         var slider = document.createElement("input");
         slider.type = 'range';
         slider.min = 0;
-        slider.max = 1.8;
-        slider.step = 0.01;
+        slider.max = 100;
+        slider.step = 1;
         slider.value = 0;
 
         document.getElementById('canvas3D').appendChild(div);
