@@ -18,16 +18,36 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js (Active LTS)
+        uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
-      - run: npm ci
-      - run: npm run lint
-      - run: npm test
-      - run: npm run build
-      - uses: actions/upload-pages-artifact@v3
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run code validation
+        run: |
+          npm run lint --if-present
+          npm test --if-present
+
+      - name: Build Vite application
+        run: npm run build
+
+      - name: Verify build artifact payload
+        run: |
+          if [ ! -d "dist" ] || [ ! -f "dist/index.html" ]; then
+            echo "❌ ERROR: Vite 'dist/' folder or 'index.html' is missing!"
+            exit 1
+          fi
+          echo "✅ dist/index.html found. Proceeding to upload."
+
+      - name: Upload production artifact
+        uses: actions/upload-pages-artifact@v3
         with:
           path: dist
 
@@ -38,5 +58,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - id: deployment
+      - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4
