@@ -2,17 +2,10 @@ import type { Segment } from '../terminal/segments';
 import { text, bold, prompt } from '../terminal/segments';
 
 export const welcome: Segment[] = [
-  text(
-    ' _       __     __\n' +
-      '| |     / /__  / /________  ____ ___  ___\n' +
-      '| | /| / / _ \\/ / ___/ __ \\/ __ `__ \\/ _ \\\n' +
-      '| |/ |/ /  __/ / /__/ /_/ / / / / / /  __/\n' +
-      '|__/|__/\\___/_/\\___/\\____/_/ /_/ /_/\\___/\n\n',
-  ),
   prompt('welcome'),
-  bold('cat welcome.txt'),
+  bold('cat welcome.txt && cd instructions'),
   text('\n\n'),
-  text("Hi, I'm Juan — a Staff Software Engineer at WhatIf Media Group.\n\n"),
+  text("Hi, I'm Juan — a Staff Fullstack Software Engineer.\n\n"),
   text(
     'I build production systems end to end: React/Next.js on the frontend, ' +
       'Java (Spring, Vert.x) on the backend, deployed on AWS with CI/CD ' +
@@ -23,7 +16,7 @@ export const welcome: Segment[] = [
     'This site itself is one of my projects: a hand-built terminal shell, no framework, no black-box widgets.\n\n',
   ),
   prompt('welcome/instructions'),
-  bold('cat .instructions'),
+  bold('cat .instructions && cd ~'),
   text('\n'),
   text('Use the buttons on the bar, or type '),
   bold('help'),

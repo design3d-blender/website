@@ -1,7 +1,7 @@
 import type { Segment } from './segments';
 import { PROMPT_USER, PROMPT_HOST } from '../config';
 
-type Atom = { kind: 'char'; ch: string; bold: boolean } | { kind: 'node'; node: () => Node };
+type Atom = { kind: 'char'; ch: string; cls?: string } | { kind: 'node'; node: () => Node };
 
 export function promptNode(directory?: string): Node {
   const wrap = document.createElement('span');
@@ -30,10 +30,14 @@ function toAtoms(segments: Segment[]): Atom[] {
   for (const segment of segments) {
     switch (segment.type) {
       case 'text':
-        for (const ch of segment.value) atoms.push({ kind: 'char', ch, bold: false });
+        for (const ch of segment.value) atoms.push({ kind: 'char', ch });
         break;
       case 'bold':
-        for (const ch of segment.value) atoms.push({ kind: 'char', ch, bold: true });
+        for (const ch of segment.value) atoms.push({ kind: 'char', ch, cls: 'bold' });
+        break;
+      case 'accent':
+        for (const ch of segment.value)
+          atoms.push({ kind: 'char', ch, cls: `fx-${segment.variant}` });
         break;
       case 'link':
         atoms.push({ kind: 'node', node: () => linkNode(segment.href, segment.label) });
@@ -46,12 +50,12 @@ function toAtoms(segments: Segment[]): Atom[] {
   return atoms;
 }
 
-function charNode(ch: string, bold: boolean): Node {
+function charNode(ch: string, cls?: string): Node {
   if (ch === '\n') return document.createElement('br');
   const value = ch === ' ' ? ' ' : ch;
-  if (!bold) return document.createTextNode(value);
+  if (!cls) return document.createTextNode(value);
   const span = document.createElement('span');
-  span.className = 'bold';
+  span.className = cls;
   span.textContent = value;
   return span;
 }
@@ -76,7 +80,7 @@ export class TypeWriter {
 
     for (const atom of atoms) {
       if (this.cancelled) return;
-      const node = atom.kind === 'char' ? charNode(atom.ch, atom.bold) : atom.node();
+      const node = atom.kind === 'char' ? charNode(atom.ch, atom.cls) : atom.node();
       this.container.appendChild(node);
       if (!instant && speedMs > 0) {
         await new Promise((resolve) => setTimeout(resolve, speedMs));

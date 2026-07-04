@@ -26,9 +26,6 @@ export class PortfolioGrid {
 
       const trigger = document.createElement('button');
       trigger.className = 'item-link';
-      trigger.style.background = 'none';
-      trigger.style.border = 'none';
-      trigger.style.padding = '0';
       trigger.setAttribute('aria-label', `open ${item.id}`);
 
       const img = document.createElement('img');

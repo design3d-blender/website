@@ -2,11 +2,47 @@
   box-sizing: border-box;
 }
 
+:root {
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+
+  --bg-0: #0e0f16;
+  --bg-1: #13141f;
+  --panel: rgba(20, 21, 32, 0.72);
+  --border: rgba(122, 162, 247, 0.22);
+  --border-strong: rgba(122, 162, 247, 0.45);
+
+  --text: #c0caf5;
+  --text-dim: #6b7394;
+  --text-bright: #e8ecff;
+
+  --accent: #7aa2f7;
+  --accent-2: #bb9af7;
+  --accent-3: #7dcfff;
+  --success: #9ece6a;
+  --warning: #e0af68;
+  --danger: #f7768e;
+
+  --radius-lg: 10px;
+  --radius-sm: 5px;
+  --glow: 0 0 0 1px var(--border), 0 12px 34px -18px rgba(122, 162, 247, 0.2);
+
+  --wallpaper-scrim-top: rgba(14, 15, 22, 0.72);
+  --wallpaper-scrim-bottom: rgba(19, 20, 31, 0.86);
+}
+
+html,
+body {
+  height: 100%;
+  overflow: clip;
+}
+
 body {
   margin: 0;
   height: 100vh;
-  overflow: hidden;
-  font-family: monospace;
+  overflow: clip;
+  font-family: var(--font-mono);
+  background: var(--bg-0);
+  color: var(--text);
 }
 
 .page {
@@ -18,33 +54,84 @@ body {
 
 .desktop {
   height: 100%;
+  min-height: 0;
   margin: 0;
-  padding: 1%;
-  background-image: url(/img/flower.jpg);
-  background-size: cover;
+  padding: 1.4%;
   flex: 100;
+  position: relative;
+  background-image:
+    linear-gradient(180deg, var(--wallpaper-scrim-top), var(--wallpaper-scrim-bottom)),
+    radial-gradient(ellipse 900px 500px at 15% -10%, rgba(122, 162, 247, 0.1), transparent 60%),
+    radial-gradient(ellipse 800px 600px at 100% 100%, rgba(187, 154, 247, 0.09), transparent 55%),
+    url('/img/flower.jpg');
+  background-size: auto, auto, auto, cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .links {
-  color: rgb(0, 183, 255);
+  color: var(--accent-3);
 }
 
 .bold {
-  font-weight: bold;
+  font-weight: 600;
 }
 
-#restore-dock {
+#dock {
   position: fixed;
-  bottom: 1rem;
-  right: 1rem;
+  bottom: 1.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 15;
+  display: flex;
+  gap: 0.6rem;
 }
 
-#restore-dock button {
-  font-family: monospace;
-  background: rgb(41, 41, 41);
-  color: white;
-  border: 1px solid rgb(153, 153, 153);
-  border-radius: 6px;
-  padding: 0.6em 1em;
+#dock[hidden] {
+  display: none;
+}
+
+#dock button {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  background: var(--panel);
+  backdrop-filter: blur(16px);
+  color: var(--text-bright);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  padding: 0.55em 1em;
   cursor: pointer;
+  box-shadow: var(--glow);
+  transition:
+    transform 0.15s ease,
+    border-color 0.15s ease;
+}
+
+#dock button:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--bg-0);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
 }

@@ -12,6 +12,11 @@ export const DIRS: Record<string, string[]> = {
   '~/portfolio': portfolioItems.map(portfolioFilename),
 };
 
+// dotfiles: left out of `ls` unless `-a` is passed, same as a real shell — but `cat` doesn't care
+export const HIDDEN_FILES: Record<string, string[]> = {
+  '~': ['.snake'],
+};
+
 export function resolveDir(current: string, target: string): string | null {
   if (target === '~' || target === '/') return '~';
   if (target === '..') {

@@ -1,0 +1,37 @@
+#matrixRain {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+#matrixRain.fade-out {
+  opacity: 0;
+}
+
+.sl-train {
+  font-family: var(--font-mono);
+  color: var(--text-dim);
+  white-space: pre;
+  line-height: 1.05;
+  font-size: 0.55rem;
+  margin: 0.4em 0;
+  width: max-content;
+  animation: sl-scroll 3.5s linear forwards;
+}
+
+@keyframes sl-scroll {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sl-train {
+    animation: none;
+  }
+}

@@ -1,20 +1,47 @@
 # juan@staff-eng
 
-My portfolio site: a terminal you can actually type into.
+[![Deploy](https://github.com/design3d-blender/website/actions/workflows/deploy.yml/badge.svg)](https://github.com/design3d-blender/website/actions/workflows/deploy.yml)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.6-3178C6?logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-5-646CFF?logo=vite&logoColor=white)
+![Vitest](https://img.shields.io/badge/tested%20with-Vitest-6E9F18?logo=vitest&logoColor=white)
+![No framework](https://img.shields.io/badge/framework-none-informational)
 
-Built with TypeScript + Vite, no framework. The buttons on the bar and the
+My portfolio site: a terminal you can actually type into, not a static page
+pretending to be one.
+
+![Screenshot of the site: a terminal window with an ASCII portrait, a welcome message, and a session-monitor widget](.github/assets/screenshot.png)
+
+**[Live demo →](https://design3d-blender.github.io/website/)**
+
+Built with TypeScript + Vite, no UI framework. The buttons on the bar and the
 command shell underneath both drive the same set of actions — there's no
-duplicated logic between them. Content (skills, projects, experience) lives
+duplicated logic between them. Content (skills, experience, projects) lives
 as typed data in `src/content/`, so updating the site is "edit a data file,
 push, CI builds and deploys it."
+
+## Features
+
+- **A real shell** — typed commands, tab-completion, ↑ / ↓ history, and a
+  tiny virtual filesystem (`ls`, `cd`, `cat`)
+- **A desktop environment** around it: a draggable window, a dock, an
+  OS-style status bar, and a session-monitor widget that shows _real_
+  signals (live FPS, uptime, viewport size, JS heap) — never fake decoration
+- **Easter eggs** — a boot sequence on load, a konami-code trigger, a hidden
+  mini-game, and a few joke Unix commands
+- **Three themes** (dark / light / matrix), fully responsive down to small
+  phones
+- **Zero black-box widgets** — the window chrome, lightbox, and shell are
+  all hand-written, not pulled from a component library
 
 ## Try it
 
 - `help` — list every command
-- `skills`, `projects`, `contact`, `resume` — jump straight to a section
+- `whoami`, `skills`, `projects`, `contact`, `resume` — jump straight to a
+  section
 - `ls` / `cd` / `cat` — the site is also a tiny virtual filesystem
 - `showcase` — loads an interactive 3D model (three.js, fetched lazily,
   only when you open it)
+- `neofetch` — yes, really
 - Tab-completion and command history (↑ / ↓) work like a real shell
 
 ## Architecture
@@ -29,7 +56,7 @@ src/
 │   ├── commands/           one module per command
 │   ├── renderer.ts         typewriter output renderer
 │   └── prompt-line.ts       the live, editable command prompt
-├── ui/                     lightbox, window chrome, theme switcher
+├── ui/                     window chrome, dock, osbar, help panel, theme switcher
 ├── showcase/               three.js model viewer (dynamic import)
 └── styles/                 plain CSS, split by concern
 ```

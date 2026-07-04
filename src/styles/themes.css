@@ -1,25 +1,43 @@
-:root[data-theme='light'] #console {
-  background-color: rgba(230, 233, 240, 0.95);
+:root[data-theme='light'] {
+  --bg-0: #e9edf5;
+  --bg-1: #dde3f0;
+  --panel: rgba(255, 255, 255, 0.78);
+  --border: rgba(58, 91, 199, 0.18);
+  --border-strong: rgba(58, 91, 199, 0.38);
+
+  --text: #1c2333;
+  --text-dim: #5b6377;
+  --text-bright: #0c1120;
+
+  --accent: #3a5bc7;
+  --accent-2: #8250c8;
+  --accent-3: #0b84a5;
+  --success: #2f8132;
+  --warning: #a6690c;
+  --danger: #c23a52;
+
+  --wallpaper-scrim-top: rgba(233, 237, 245, 0.86);
+  --wallpaper-scrim-bottom: rgba(221, 227, 240, 0.9);
 }
 
-:root[data-theme='light'] #output p,
-:root[data-theme='light'] .shell-input {
-  color: #1a1a1a;
-}
+:root[data-theme='matrix'] {
+  --bg-0: #000a00;
+  --bg-1: #001400;
+  --panel: rgba(0, 12, 0, 0.82);
+  --border: rgba(51, 255, 51, 0.28);
+  --border-strong: rgba(51, 255, 51, 0.55);
 
-:root[data-theme='matrix'] #console {
-  background-color: rgba(0, 10, 0, 0.95);
-}
+  --text: #33ff33;
+  --text-dim: #1f8a1f;
+  --text-bright: #aaffaa;
 
-:root[data-theme='matrix'] #output p,
-:root[data-theme='matrix'] .shell-input {
-  color: #33ff33;
-}
+  --accent: #33ff33;
+  --accent-2: #33ff33;
+  --accent-3: #33ff33;
+  --success: #33ff33;
+  --warning: #33ff33;
+  --danger: #ff5c5c;
 
-:root[data-theme='matrix'] .bracket,
-:root[data-theme='matrix'] .user,
-:root[data-theme='matrix'] .at,
-:root[data-theme='matrix'] .host,
-:root[data-theme='matrix'] .directory {
-  color: #33ff33;
+  --wallpaper-scrim-top: rgba(0, 10, 0, 0.82);
+  --wallpaper-scrim-bottom: rgba(0, 20, 0, 0.9);
 }

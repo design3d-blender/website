@@ -32,7 +32,10 @@ export class PromptLine {
   }
 
   focus(): void {
-    this.input.focus();
+    // preventScroll: focusing a freshly-appended input at the bottom of #console
+    // otherwise makes the browser scroll the *page* (not just #console) into
+    // view, which shifts #osbar/#topbar off-screen above the viewport.
+    this.input.focus({ preventScroll: true });
   }
 
   private handleKey(e: KeyboardEvent): void {

@@ -12,6 +12,7 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "@fontsource/jetbrains-mono": "^5.2.8",
     "three": "^0.170.0"
   },
   "devDependencies": {

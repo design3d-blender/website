@@ -14,6 +14,11 @@ import { contact } from './contact';
 import { projectsCommand } from './projects';
 import { resume } from './resume';
 import { sudo } from './sudo';
+import { neofetch } from './neofetch';
+import { snake } from './snake';
+import { cowsay } from './cowsay';
+import { fortune } from './fortune';
+import { sl } from './sl';
 
 export const commands: Command[] = [
   help,
@@ -31,4 +36,9 @@ export const commands: Command[] = [
   projectsCommand,
   resume,
   sudo,
+  neofetch,
+  snake,
+  cowsay,
+  fortune,
+  sl,
 ];

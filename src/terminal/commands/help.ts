@@ -7,7 +7,7 @@ export const help: Command = {
   summary: 'list available commands',
   run(ctx) {
     const lines = commands
-      .slice()
+      .filter((c) => !c.hidden)
       .sort((a, b) => a.name.localeCompare(b.name))
       .map((c) => `  ${c.name.padEnd(10)} ${c.summary}`)
       .join('\n');

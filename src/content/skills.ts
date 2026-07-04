@@ -10,34 +10,48 @@ export const skills: Segment[] = [
       '│   ├── Languages\n' +
       '│   │   ├── TypeScript / JavaScript\n' +
       '│   │   ├── Java\n' +
-      '│   │   └── C\n' +
+      '│   │   ├── Python\n' +
+      '│   │   ├── Go\n' +
+      '│   │   ├── PHP\n' +
+      '│   │   ├── C / C++\n' +
+      '│   │   └── ClojureScript\n' +
       '│   ├── Frontend\n' +
       '│   │   ├── React\n' +
+      '│   │   ├── Redux / Redux Toolkit\n' +
       '│   │   ├── Next.js\n' +
-      '│   │   └── Vue.js\n' +
+      '│   │   ├── Vue.js\n' +
+      '│   │   └── React SSR\n' +
       '│   ├── Backend\n' +
-      '│   │   ├── Spring / SpringData\n' +
+      '│   │   ├── Spring / Spring WebFlux\n' +
       '│   │   ├── Vert.x\n' +
+      '│   │   ├── Quarkus\n' +
+      '│   │   ├── Django\n' +
       '│   │   ├── Hibernate / JPA\n' +
-      '│   │   └── REST\n' +
+      '│   │   └── REST / OpenAPI & Swagger\n' +
       '│   ├── Cloud & DevOps\n' +
-      '│   │   ├── AWS\n' +
-      '│   │   ├── CI/CD (GitHub Actions)\n' +
-      '│   │   └── Docker\n' +
+      '│   │   ├── AWS (Bedrock, EKS, ECS, SQS, S3)\n' +
+      '│   │   ├── Docker / Kubernetes\n' +
+      '│   │   ├── CI/CD (GitHub Actions, Azure DevOps)\n' +
+      '│   │   └── Redis\n' +
       '│   ├── AI & Agent Tooling\n' +
       '│   │   ├── LangChain\n' +
       '│   │   ├── LangGraph\n' +
       '│   │   ├── AWS Strands\n' +
       '│   │   └── AWS Bedrock\n' +
-      '│   └── Data\n' +
-      '│       ├── MongoDB\n' +
-      '│       ├── MySQL\n' +
-      '│       └── SQL\n' +
+      '│   ├── Data\n' +
+      '│   │   ├── MongoDB\n' +
+      '│   │   ├── MySQL / SQL\n' +
+      '│   │   └── Neo4j\n' +
+      '│   └── Architecture\n' +
+      '│       ├── Microservices / SOA\n' +
+      '│       ├── Headless CMS\n' +
+      '│       └── Front-end standardization\n' +
       '└── 3D Design (hobby)\n' +
       '    ├── Blender\n' +
       '    ├── Substance\n' +
-      '    └── Three.js\n\n' +
-      '31 directories\n',
+      '    ├── Three.js / Babylon.js\n' +
+      '    └── Architectural visualization\n\n' +
+      '45 directories\n',
   ),
   prompt('skills'),
 ];

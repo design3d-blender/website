@@ -1,8 +1,8 @@
 import type { Command } from '../context';
-import { text, link } from '../segments';
+import { text, bold, link } from '../segments';
 import { projects } from '../../content/projects';
 import { portfolioItems } from '../../content/portfolio';
-import { slug, DIRS, portfolioFilename } from '../filesystem';
+import { slug, DIRS, HIDDEN_FILES, portfolioFilename } from '../filesystem';
 
 export const cat: Command = {
   name: 'cat',
@@ -15,7 +15,8 @@ export const cat: Command = {
     }
 
     const entries = DIRS[ctx.directory] ?? [];
-    if (!entries.includes(file)) {
+    const hiddenEntries = HIDDEN_FILES[ctx.directory] ?? [];
+    if (!entries.includes(file) && !hiddenEntries.includes(file)) {
       await ctx.print([text(`cat: ${file}: no such file\n`)]);
       return;
     }
@@ -25,6 +26,14 @@ export const cat: Command = {
       if (file === 'skills.txt') return ctx.showSkills();
       if (file === 'contact.txt') return ctx.showContact();
       if (file === 'resume.pdf') return ctx.openResume();
+      if (file === '.snake') {
+        await ctx.print([
+          text('someone left a game lying around here. try running '),
+          bold('snake'),
+          text('.\n'),
+        ]);
+        return;
+      }
     }
 
     if (ctx.directory === '~/projects') {

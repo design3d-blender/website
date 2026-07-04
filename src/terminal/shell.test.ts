@@ -5,6 +5,7 @@ import type { Command, ShellContext } from './context';
 function makeCtx(): ShellContext {
   return {
     print: vi.fn().mockResolvedValue(undefined),
+    mountElement: vi.fn(),
     clear: vi.fn(),
     directory: '~',
     setDirectory: vi.fn(),

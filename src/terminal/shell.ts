@@ -47,6 +47,7 @@ export class Shell {
   complete(partial: string): string[] {
     if (!partial) return [];
     return this.registry
+      .filter((c) => !c.hidden)
       .map((c) => c.name)
       .filter((name) => name.startsWith(partial))
       .sort();

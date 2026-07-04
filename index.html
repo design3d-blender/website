@@ -11,20 +11,46 @@
     />
   </head>
   <body>
+    <div id="bootScreen">
+      <div id="bootLines"></div>
+      <div id="bootHint">press any key to skip</div>
+    </div>
+
     <div class="page">
+      <div id="osbar">
+        <div class="osbar-brand">
+          <span class="osbar-dot" id="osOnlineDot" aria-hidden="true">&#9679;</span>
+          <span id="osOnlineLabel">online</span>
+          <span class="osbar-sep">·</span>
+          <span>juan@staff-eng</span>
+          <span class="osbar-sep" id="osDirectorySep">·</span>
+          <span id="osDirectory">~</span>
+        </div>
+        <div class="osbar-tray">
+          <span id="osCmdCount">0 cmds</span>
+          <button id="osThemeToggle" class="osbar-theme" aria-label="cycle theme">dark</button>
+          <span id="osViewport">0 &times; 0</span>
+          <span id="osClock">00:00:00</span>
+        </div>
+      </div>
       <div id="topbar" class="navbar">
-        <button data-action="welcome" class="button button-active">Welcome</button>
-        <button data-action="skills" class="button">Skills</button>
-        <button data-action="projects" class="button">Projects</button>
-        <button data-action="portfolio" class="button">Portfolio</button>
-        <button data-action="resume" class="button">Resume</button>
-        <button data-action="contact" class="button">Contact</button>
+        <div class="topbar-brand">
+          <img src="img/profile.png" alt="" class="profile-avatar" width="24" height="24" />
+        </div>
+        <div class="topbar-tabs">
+          <button data-action="welcome" class="button button-active">Welcome</button>
+          <button data-action="skills" class="button">Skills</button>
+          <button data-action="projects" class="button">Projects</button>
+          <button data-action="portfolio" class="button">Portfolio</button>
+          <button data-action="resume" class="button">Resume</button>
+          <button data-action="contact" class="button">Contact</button>
+        </div>
       </div>
       <div class="desktop">
         <div id="window">
           <div id="consolebar" class="navbar">
-            <div class="profile">
-              <img src="img/profile.png" alt="Juan Luis Munoz Ioannidis" />
+            <div class="window-brand">
+              <img src="img/profile.png" alt="" class="profile-avatar" width="24" height="24" />
             </div>
             <div class="buttons">
               <button data-action="welcome" class="button button-active">Welcome</button>
@@ -36,20 +62,18 @@
               <button data-action="contact" class="button">Contact</button>
             </div>
             <div id="windowButtons">
-              <button class="close" data-window="close" aria-label="close window">
-                <span><strong>x</strong></span>
-              </button>
-              <button class="minimize" data-window="minimize" aria-label="minimize window">
-                <span><strong>&ndash;</strong></span>
-              </button>
-              <button class="zoom" data-window="zoom" aria-label="maximize window">
-                <span><strong>+</strong></span>
-              </button>
+              <button
+                class="win-dot minimize"
+                data-window="minimize"
+                aria-label="minimize window"
+              ></button>
+              <button class="win-dot zoom" data-window="zoom" aria-label="maximize window"></button>
+              <button class="win-dot close" data-window="close" aria-label="close window"></button>
             </div>
           </div>
           <div id="console" aria-live="polite">
             <div id="output"></div>
-            <div class="container" id="links" hidden></div>
+            <div id="links" hidden></div>
             <div id="canvas3D" hidden>
               <canvas id="renderCanvas">Your browser does not support the canvas tag.</canvas>
               <div id="slider">
@@ -64,12 +88,55 @@
               </div>
             </div>
           </div>
+          <button id="helpButton" class="help-fab" aria-label="help">
+            <span class="help-fab-icon">?</span>
+            <span class="help-fab-label">help</span>
+          </button>
+        </div>
+
+        <div id="widget" hidden>
+          <div id="widgetBar">
+            <span>session.monitor</span>
+            <button
+              id="widgetClose"
+              class="win-dot close"
+              aria-label="close session monitor"
+            ></button>
+          </div>
+          <div id="widgetBody">
+            <div class="widget-row"><span>uptime</span><span id="wUptime">0s</span></div>
+            <div class="widget-row"><span>viewport</span><span id="wViewport">&mdash;</span></div>
+            <div class="widget-row"><span>fps</span><span id="wFps">&mdash;</span></div>
+            <div class="widget-row" id="wMemRow" hidden>
+              <span>js heap</span><span id="wMem">&mdash;</span>
+            </div>
+            <canvas id="wSparkline" width="220" height="36" aria-hidden="true"></canvas>
+          </div>
         </div>
       </div>
     </div>
 
-    <div id="restore-dock" hidden>
-      <button id="restore-button">reopen terminal</button>
+    <div id="dock"></div>
+
+    <div id="helpBackdrop" hidden></div>
+    <div id="helpPanel" hidden role="dialog" aria-label="help">
+      <div id="helpPanelHeader">
+        <span>help</span>
+        <button id="helpClose" class="win-dot close" aria-label="close help"></button>
+      </div>
+      <div id="helpPanelBody">
+        <p class="help-intro">
+          This is a real terminal, not decoration. Type commands into the prompt, click a tab above,
+          or click any command below to run it.<br />
+          <strong>&uarr; / &darr;</strong> browse history &middot;
+          <strong>Tab</strong> autocompletes &middot; <strong>clear</strong> wipes the screen.
+        </p>
+        <div id="helpCommandList"></div>
+        <p class="help-secrets">
+          psst — not everything shows up above. try <strong>ls -a</strong> somewhere. some classic
+          terminal tricks still work here too.
+        </p>
+      </div>
     </div>
 
     <script type="module" src="/src/main.ts"></script>
