@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="img/profile.png" />
+    <title>juan@staff-eng</title>
+    <meta
+      name="description"
+      content="Juan Luis Munoz Ioannidis — Staff Software Engineer. A terminal you can actually type into."
+    />
+  </head>
+  <body>
+    <div class="page">
+      <div id="topbar" class="navbar">
+        <button data-action="welcome" class="button button-active">Welcome</button>
+        <button data-action="skills" class="button">Skills</button>
+        <button data-action="projects" class="button">Projects</button>
+        <button data-action="portfolio" class="button">Portfolio</button>
+        <button data-action="resume" class="button">Resume</button>
+        <button data-action="contact" class="button">Contact</button>
+      </div>
+      <div class="desktop">
+        <div id="window">
+          <div id="consolebar" class="navbar">
+            <div class="profile">
+              <img src="img/profile.png" alt="Juan Luis Munoz Ioannidis" />
+            </div>
+            <div class="buttons">
+              <button data-action="welcome" class="button button-active">Welcome</button>
+              <button data-action="skills" class="button">Skills</button>
+              <button data-action="projects" class="button">Projects</button>
+              <button data-action="portfolio" class="button">Portfolio</button>
+              <button data-action="showcase" class="button" id="showcaseButton">Showcase</button>
+              <button data-action="resume" class="button">Resume</button>
+              <button data-action="contact" class="button">Contact</button>
+            </div>
+            <div id="windowButtons">
+              <button class="close" data-window="close" aria-label="close window">
+                <span><strong>x</strong></span>
+              </button>
+              <button class="minimize" data-window="minimize" aria-label="minimize window">
+                <span><strong>&ndash;</strong></span>
+              </button>
+              <button class="zoom" data-window="zoom" aria-label="maximize window">
+                <span><strong>+</strong></span>
+              </button>
+            </div>
+          </div>
+          <div id="console" aria-live="polite">
+            <div id="output"></div>
+            <div class="container" id="links" hidden></div>
+            <div id="canvas3D" hidden>
+              <canvas id="renderCanvas">Your browser does not support the canvas tag.</canvas>
+              <div id="slider">
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  step="1"
+                  value="0"
+                  aria-label="scrub 3D animation"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="restore-dock" hidden>
+      <button id="restore-button">reopen terminal</button>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

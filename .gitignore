@@ -1,2 +1,7 @@
 model/*
+.hidden_context
 page.code-workspace
+node_modules
+dist
+*.local
+.vite

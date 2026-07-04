@@ -1,0 +1,25 @@
+:root[data-theme='light'] #console {
+  background-color: rgba(230, 233, 240, 0.95);
+}
+
+:root[data-theme='light'] #output p,
+:root[data-theme='light'] .shell-input {
+  color: #1a1a1a;
+}
+
+:root[data-theme='matrix'] #console {
+  background-color: rgba(0, 10, 0, 0.95);
+}
+
+:root[data-theme='matrix'] #output p,
+:root[data-theme='matrix'] .shell-input {
+  color: #33ff33;
+}
+
+:root[data-theme='matrix'] .bracket,
+:root[data-theme='matrix'] .user,
+:root[data-theme='matrix'] .at,
+:root[data-theme='matrix'] .host,
+:root[data-theme='matrix'] .directory {
+  color: #33ff33;
+}

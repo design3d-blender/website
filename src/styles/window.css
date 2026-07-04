@@ -1,0 +1,162 @@
+.navbar {
+  display: flex;
+  width: 100%;
+  background-image: linear-gradient(rgb(41, 41, 41), rgb(44, 44, 44));
+  border-bottom: 0.5px solid rgb(5, 5, 5);
+  height: 3%;
+  min-height: 2.5em;
+  font-family: monospace;
+  font-weight: normal;
+  justify-content: space-between;
+  flex: 1;
+  margin: 0;
+  padding: 0.4em;
+  align-items: center;
+}
+
+.profile {
+  display: flex;
+  flex: 1;
+  height: 100%;
+  max-width: 4%;
+}
+
+.profile img {
+  height: 100%;
+  width: auto;
+  border-radius: 50%;
+  border: 1.2px solid rgb(17, 17, 17);
+}
+
+#window {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 4px solid rgb(173, 173, 173);
+}
+
+#window.maximized {
+  position: fixed;
+  inset: 0;
+  border: none;
+  z-index: 10;
+}
+
+.buttons {
+  height: 100%;
+  display: flex;
+  flex: 3;
+  justify-content: center;
+}
+
+.button {
+  height: 100%;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0);
+  color: rgb(245, 245, 245);
+  border: 2px solid #999999;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  padding: 0px 6px;
+  margin: 1px 3px;
+  font-family: monospace;
+  cursor: pointer;
+}
+
+.button:hover,
+.button-active {
+  outline: none;
+  background-color: #999999;
+  color: rgb(0, 0, 0);
+  border: 2px solid #999999;
+  border-radius: 8px;
+}
+
+#windowButtons {
+  height: 100%;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 4px;
+  justify-content: flex-end;
+}
+
+#windowButtons button {
+  font-size: 9pt;
+  line-height: 50%;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  padding: 0;
+  cursor: pointer;
+}
+
+#windowButtons button span {
+  visibility: hidden;
+}
+
+#windowButtons:hover button span {
+  visibility: visible;
+}
+
+.close {
+  background: #ff5c5c;
+  border: 1px solid #e33e41;
+  color: #820005;
+}
+
+.close:active {
+  background: #c14645;
+  border: 1px solid #b03537;
+  color: #4e0002;
+}
+
+.minimize {
+  background: #ffbd4c;
+  border: 1px solid #e09e3e;
+  color: #9a5518;
+}
+
+.minimize:active {
+  background: #c08e38;
+  border: 1px solid #af7c33;
+  color: #5a2607;
+}
+
+.zoom {
+  background: #00ca56;
+  border: 1px solid #14ae46;
+  color: #006519;
+}
+
+.zoom:active {
+  background: #029740;
+  border: 1px solid #128435;
+  color: #003107;
+}
+
+.close-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 20, 20, 0.92);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  font-family: monospace;
+  z-index: 20;
+}
+
+.close-overlay button {
+  font-family: monospace;
+  background: rgb(41, 41, 41);
+  color: white;
+  border: 1px solid rgb(153, 153, 153);
+  border-radius: 6px;
+  padding: 0.6em 1.2em;
+  cursor: pointer;
+}

@@ -1,0 +1,108 @@
+@media screen and (min-width: 1101px) {
+  .item {
+    height: 30vh;
+    width: 13vw;
+    padding: 1vh;
+  }
+  .navbar {
+    min-height: 3em;
+  }
+  #topbar {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .item {
+    height: 32%;
+    width: 32%;
+  }
+  #topbar {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  #showcaseButton {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 601px) {
+  #output p {
+    font-size: 0.95rem;
+  }
+  .navbar {
+    font-size: 1rem;
+    flex: 1.5;
+  }
+  #topbar {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #output p {
+    font-size: 0.9rem;
+  }
+  #consolebar {
+    display: none;
+  }
+  #topbar {
+    display: flex;
+    min-height: 10%;
+    flex: 1;
+    overflow-x: auto;
+    justify-content: flex-start;
+  }
+  #topbar .button {
+    flex-shrink: 0;
+  }
+  .desktop {
+    padding: 0;
+    height: 90%;
+  }
+  .profile {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #output p {
+    font-size: 0.7rem;
+  }
+  #consolebar {
+    display: none;
+  }
+  #window {
+    border: none;
+  }
+  #topbar {
+    display: flex;
+    flex: 1;
+    min-height: 4%;
+    font-size: 0.5em;
+    overflow-x: auto;
+    justify-content: flex-start;
+  }
+  #topbar .button {
+    flex-shrink: 0;
+  }
+  .desktop {
+    padding: 0;
+    height: 96%;
+  }
+  .profile {
+    display: none;
+  }
+  .button {
+    padding: 5px 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
