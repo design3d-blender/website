@@ -1,0 +1,258 @@
+#console {
+  background: var(--panel);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  overflow: auto;
+  overflow-wrap: anywhere;
+  height: 90%;
+  width: 100%;
+  margin: 0;
+  display: block;
+  flex: 100;
+  padding: 0.9em 1.1em;
+  /* extra bottom clearance so the last prompt line never scrolls in behind
+     the help button (.help-fab), which floats over this corner of #window */
+  padding-bottom: 3.4em;
+}
+
+#output p {
+  color: var(--text);
+  font-family: var(--font-mono);
+  margin: 0.4em 0;
+  white-space: pre-wrap;
+  line-height: 1.55;
+  font-size: 0.95rem;
+}
+
+/* ASCII-art blocks (the portrait) render at a much smaller scale than normal
+   output text, so a large detailed piece of art doesn't dominate the screen —
+   this keeps every character/line of detail, just shrunk, rather than
+   downsampling the art itself and losing detail. */
+#output p.ascii-portrait {
+  font-size: 0.34rem;
+  line-height: 1.15;
+  letter-spacing: 0;
+}
+
+/* places two output blocks (e.g. the portrait + the welcome wordmark) on the
+   same row instead of stacked; wraps to stacked automatically if they don't
+   fit side by side (narrow screens) rather than overflowing or squeezing. */
+.side-by-side {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0 1.4em;
+}
+
+.side-by-side p {
+  margin: 0.4em 0;
+}
+
+.bracket {
+  color: var(--accent-2);
+  font-weight: 600;
+}
+
+.user {
+  color: var(--warning);
+  font-weight: 600;
+}
+
+.at {
+  color: var(--text-dim);
+  font-weight: 600;
+}
+
+.host {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.directory {
+  color: var(--accent-3);
+  font-weight: 600;
+}
+
+.fx-accent {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.fx-accent-2 {
+  color: var(--accent-2);
+  font-weight: 600;
+}
+
+.fx-accent-3 {
+  color: var(--accent-3);
+  font-weight: 600;
+}
+
+.fx-success {
+  color: var(--success);
+  font-weight: 600;
+}
+
+.fx-warning {
+  color: var(--warning);
+  font-weight: 600;
+}
+
+.fx-danger {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+.shell-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-bright);
+  caret-color: var(--accent-3);
+  font-family: var(--font-mono);
+  font-size: 1em;
+  flex: 1;
+  min-width: 4ch;
+}
+
+#links {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.8em;
+  width: 100%;
+  margin: 0.6em 0;
+  /* like #console's own padding-bottom: the grid can be tall enough that its
+     last row lands at #window's bottom-left corner even without scrolling,
+     which is where .help-fab floats — keep that corner clear regardless. */
+  margin-bottom: 3.4em;
+}
+
+#links[hidden] {
+  display: none;
+}
+
+.item {
+  aspect-ratio: 1;
+}
+
+.item-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.img-fluid {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  transition:
+    transform 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.img-fluid:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-strong);
+}
+
+#renderCanvas {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  outline: none;
+}
+
+#canvas3D {
+  width: 100%;
+  height: 90%;
+  background: transparent;
+}
+
+#canvas3D[hidden] {
+  display: none;
+}
+
+#slider {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  margin-top: -2em;
+  padding: 0;
+  /* left clearance so the scrub track's left end doesn't sit under .help-fab,
+     which floats over this same bottom-left corner of #window */
+  padding-left: 7em;
+}
+
+#slider input {
+  -webkit-appearance: none;
+  width: 80%;
+  height: 0.4em;
+  background: var(--border);
+  outline: none;
+  opacity: 1;
+  transition: opacity 0.2s;
+  border-radius: 1rem;
+}
+
+#slider input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: var(--accent);
+  cursor: pointer;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(122, 162, 247, 0.2);
+}
+
+.game-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5em;
+  margin: 0.6em 0;
+}
+
+.game-hud-row {
+  display: flex;
+  align-items: center;
+  gap: 0.8em;
+  width: 320px;
+  max-width: 100%;
+}
+
+.game-hud {
+  color: var(--text-dim);
+  font-size: 0.85em;
+  flex: 1;
+}
+
+.game-quit {
+  font-family: var(--font-mono);
+  font-size: 0.78em;
+  background: transparent;
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.2em 0.6em;
+  cursor: pointer;
+}
+
+.game-quit:hover {
+  color: var(--danger);
+  border-color: var(--danger);
+}
+
+.game-canvas {
+  max-width: 100%;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: rgba(0, 0, 0, 0.18);
+  touch-action: none;
+}

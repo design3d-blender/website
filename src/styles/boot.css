@@ -1,0 +1,43 @@
+#bootScreen {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: #000;
+  color: #cdf0d4;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  cursor: default;
+  transition: opacity 0.25s ease;
+}
+
+#bootScreen.boot-done {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#bootLines {
+  white-space: pre-wrap;
+  overflow: hidden;
+  line-height: 1.6;
+}
+
+.boot-ok {
+  color: var(--success);
+  font-weight: 600;
+}
+
+#bootHint {
+  margin-top: auto;
+  padding-top: 1rem;
+  opacity: 0.4;
+  font-size: 0.75rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #bootScreen {
+    display: none;
+  }
+}

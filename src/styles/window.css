@@ -1,0 +1,508 @@
+.navbar {
+  display: flex;
+  width: 100%;
+  background: var(--panel);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border);
+  height: 3%;
+  min-height: 2.9em;
+  font-family: var(--font-mono);
+  font-weight: normal;
+  justify-content: space-between;
+  flex: 1;
+  margin: 0;
+  padding: 0.4em 0.6em;
+  align-items: center;
+  gap: 0.5em;
+}
+
+#window {
+  position: absolute;
+  left: 8%;
+  top: 7%;
+  width: 84%;
+  height: 86%;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  box-shadow: var(--glow);
+  overflow: hidden;
+}
+
+#window.maximized {
+  position: fixed;
+  inset: 0;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  z-index: 10;
+}
+
+#window[hidden] {
+  display: none;
+}
+
+.drag-handle {
+  cursor: grab;
+}
+
+.drag-handle.is-dragging {
+  cursor: grabbing;
+}
+
+body.is-dragging-any {
+  user-select: none;
+}
+
+.buttons,
+.topbar-tabs {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex: 3;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  justify-content: safe center;
+  gap: 0.3em;
+  counter-reset: workspace;
+  /* scrolls by touch/wheel/drag same as any scroll region, but a visible
+     scrollbar track looks out of place on what reads as a toolbar */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.buttons::-webkit-scrollbar,
+.topbar-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.buttons .button {
+  flex-shrink: 0;
+}
+
+.buttons::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 1.6em;
+  pointer-events: none;
+  background: linear-gradient(to right, transparent, var(--panel));
+}
+
+.topbar-brand {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.topbar-tabs {
+  position: relative;
+  flex: 1;
+  overflow-x: auto;
+  justify-content: flex-start;
+}
+
+.topbar-tabs .button {
+  flex-shrink: 0;
+}
+
+/* hints that the tab strip scrolls when it overflows on narrow screens */
+#topbar {
+  position: relative;
+}
+
+#topbar::after {
+  content: '';
+  position: absolute;
+  top: 1px;
+  right: 0;
+  bottom: 1px;
+  width: 1.8em;
+  pointer-events: none;
+  background: linear-gradient(to right, transparent, var(--panel));
+}
+
+.button {
+  height: calc(100% - 2px);
+  outline: none;
+  background-color: transparent;
+  color: var(--text-dim);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  padding: 0 0.7em;
+  margin: 1px 0;
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  cursor: pointer;
+  counter-increment: workspace;
+  transition:
+    color 0.15s ease,
+    background-color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.button::before {
+  content: counter(workspace) ':';
+  opacity: 0.55;
+  margin-right: 0.45em;
+  font-size: 0.85em;
+}
+
+.button:hover {
+  color: var(--text-bright);
+  background-color: rgba(122, 162, 247, 0.1);
+  border-color: var(--border);
+}
+
+.button-active {
+  color: var(--bg-0);
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+
+.button-active:hover {
+  color: var(--bg-0);
+  background-color: var(--accent);
+}
+
+.button-active::before {
+  opacity: 0.7;
+}
+
+.window-brand {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.profile-avatar {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid var(--border-strong);
+  object-fit: cover;
+  display: block;
+}
+
+#windowButtons {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 6px;
+}
+
+.win-dot {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  padding: 0;
+  cursor: pointer;
+  transition: filter 0.15s ease;
+}
+
+.win-dot:hover {
+  filter: brightness(1.25);
+}
+
+.close {
+  background: var(--danger);
+  border: 1px solid #b6415a;
+  color: #4a0212;
+}
+
+.close:active {
+  filter: brightness(0.85);
+}
+
+.minimize {
+  background: var(--warning);
+  border: 1px solid #b3813f;
+  color: #4a2e05;
+}
+
+.minimize:active {
+  filter: brightness(0.85);
+}
+
+.zoom {
+  background: var(--success);
+  border: 1px solid #5e9143;
+  color: #1c3308;
+}
+
+.zoom:active {
+  filter: brightness(0.85);
+}
+
+#osbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 1.8em;
+  min-height: 1.8em;
+  padding: 0 0.9em;
+  font-family: var(--font-mono);
+  font-size: 0.78em;
+  color: var(--text-dim);
+  background: var(--bg-1);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.osbar-brand,
+.osbar-tray {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.osbar-dot {
+  color: var(--success);
+  font-size: 0.7em;
+}
+
+.osbar-dot.offline {
+  color: var(--danger);
+}
+
+.osbar-sep {
+  opacity: 0.4;
+}
+
+.osbar-tray {
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+}
+
+#osDirectory {
+  color: var(--accent-3);
+}
+
+#osCmdCount {
+  opacity: 0.75;
+}
+
+.osbar-theme {
+  font-family: var(--font-mono);
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  border-radius: var(--radius-sm);
+  padding: 0.1em 0.5em;
+  font-size: 0.9em;
+  cursor: pointer;
+  text-transform: capitalize;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.osbar-theme:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.help-fab {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  font-family: var(--font-mono);
+  background: var(--panel);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-strong);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 0.45em 0.9em 0.45em 0.5em;
+  cursor: pointer;
+  font-size: 0.8em;
+  box-shadow: var(--glow);
+  transition:
+    border-color 0.15s ease,
+    transform 0.15s ease;
+}
+
+.help-fab:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.help-fab-icon {
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  border: 1px solid var(--border-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-3);
+}
+
+.help-fab-label {
+  color: var(--text-dim);
+}
+
+#widget {
+  position: absolute;
+  left: calc(96% - 240px);
+  top: 74%;
+  width: 240px;
+  background: var(--panel);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glow);
+  overflow: hidden;
+  font-family: var(--font-mono);
+  z-index: 3;
+}
+
+#widget[hidden] {
+  display: none;
+}
+
+#widgetBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5em 0.7em;
+  font-size: 0.78em;
+  color: var(--text-dim);
+  border-bottom: 1px solid var(--border);
+}
+
+#widgetBody {
+  padding: 0.7em;
+}
+
+.widget-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8em;
+  color: var(--text-dim);
+  padding: 0.15em 0;
+}
+
+.widget-row span:last-child {
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+#wSparkline {
+  display: block;
+  width: 100%;
+  height: 36px;
+  margin-top: 0.5em;
+}
+
+#helpBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 49;
+}
+
+#helpBackdrop[hidden] {
+  display: none;
+}
+
+#helpPanel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(480px, 92vw);
+  max-height: min(600px, 84vh);
+  display: flex;
+  flex-direction: column;
+  background: var(--panel);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glow);
+  z-index: 50;
+  font-family: var(--font-mono);
+  overflow: hidden;
+}
+
+#helpPanel[hidden] {
+  display: none;
+}
+
+#helpPanelHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.7em 1em;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-dim);
+  font-size: 0.85em;
+}
+
+#helpPanelBody {
+  padding: 1em 1.2em 1.2em;
+  overflow-y: auto;
+}
+
+.help-intro {
+  color: var(--text-dim);
+  font-size: 0.82em;
+  line-height: 1.7;
+  margin: 0 0 1em;
+}
+
+.help-intro strong {
+  color: var(--text);
+}
+
+.help-command-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1em;
+  padding: 0.45em 0.6em;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.help-command-row:hover,
+.help-command-row:focus-visible {
+  background: rgba(122, 162, 247, 0.1);
+  outline: none;
+}
+
+.help-command-row .name {
+  color: var(--accent-3);
+  font-weight: 600;
+  font-size: 0.85em;
+}
+
+.help-command-row .summary {
+  color: var(--text-dim);
+  font-size: 0.78em;
+  text-align: right;
+}
+
+.help-secrets {
+  margin: 1em 0 0;
+  padding-top: 0.8em;
+  border-top: 1px dashed var(--border);
+  color: var(--accent-2);
+  font-size: 0.78em;
+  line-height: 1.6;
+}

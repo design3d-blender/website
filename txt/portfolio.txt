@@ -1,3 +1,0 @@
-cd portfolio
-?portfolio sxiv -t *.png
-click any image to enter "gallery mode"

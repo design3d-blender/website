@@ -1,0 +1,95 @@
+#topbar {
+  display: none;
+}
+
+@media screen and (min-width: 1101px) {
+  .navbar {
+    min-height: 3em;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  #showcaseButton {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 701px) {
+  #output p {
+    font-size: 0.95rem;
+  }
+  .navbar {
+    font-size: 1rem;
+    flex: 1.5;
+  }
+}
+
+/* below this width the window is no longer a floating panel: dragging is
+   disabled in JS (see draggable.ts's isMobile threshold), the widget/dock
+   don't fit a touch screen, and the consolebar (with its traffic lights)
+   swaps for the simpler topbar since minimize/maximize don't apply to a
+   full-bleed view. #window keeps `position: relative` (not static) so the
+   help button anchored inside it still has a positioning context. */
+@media screen and (max-width: 700px) {
+  #window {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: none;
+  }
+  #widget,
+  #dock,
+  #consolebar {
+    display: none;
+  }
+  #topbar {
+    display: flex;
+  }
+  #osbar {
+    font-size: 0.68em;
+    padding: 0 0.6em;
+  }
+  #osViewport,
+  #osCmdCount,
+  #osDirectorySep,
+  #osDirectory {
+    display: none;
+  }
+  .desktop {
+    padding: 0;
+  }
+  #links {
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 0.6em;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #output p {
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #output p {
+    font-size: 0.7rem;
+  }
+  #window {
+    border: none;
+  }
+  #topbar {
+    font-size: 0.7em;
+  }
+  .button {
+    padding: 5px 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
