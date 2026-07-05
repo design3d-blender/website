@@ -170,6 +170,11 @@ function bumpCommandCount(): void {
   setOsbarCommandCount(commandCount);
 }
 
+// coarse pointer = touch device with a virtual keyboard; auto-focusing here
+// would pop it open on every command/section change, so leave focus to an
+// explicit tap on touch devices instead.
+const isTouchDevice = () => window.matchMedia('(pointer: coarse)').matches;
+
 function spawnPrompt(): void {
   const line = new PromptLine(ctx.directory, shell, {
     onSubmit: async (value) => {
@@ -182,7 +187,7 @@ function spawnPrompt(): void {
     },
   });
   output.appendChild(line.element);
-  line.focus();
+  if (!isTouchDevice()) line.focus();
   scrollToBottom();
 }
 

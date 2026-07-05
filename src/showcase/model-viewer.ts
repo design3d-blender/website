@@ -1,10 +1,11 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
+import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js';
 import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
 
 const MODEL_URL = 'models/scene-opt.glb';
+const HDRI_URL = 'hdri/studio_small_08_1k.hdr';
 
 export class ModelViewer {
   private readonly renderer: THREE.WebGLRenderer;
@@ -20,25 +21,18 @@ export class ModelViewer {
     this.renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    this.renderer.toneMappingExposure = 1.15;
 
     this.camera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
     this.camera.position.set(0, 0, 20);
 
-    const pmrem = new THREE.PMREMGenerator(this.renderer);
-    this.scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
-
-    // three-point studio rig on top of the soft IBL fill above — this is what
-    // gives the model actual specular highlights and shaded form instead of
-    // looking flat.
-    const key = new THREE.DirectionalLight(0xffffff, 3.2);
+    // low-intensity rig on top of the HDRI IBL below — just enough to add a
+    // directional key/rim without double-lighting what the HDRI already sells.
+    const key = new THREE.DirectionalLight(0xffffff, 1.1);
     key.position.set(5, 8, 10);
     this.scene.add(key);
 
-    const fill = new THREE.DirectionalLight(0xaecbff, 0.9);
-    fill.position.set(-8, 3, 6);
-    this.scene.add(fill);
-
-    const rim = new THREE.DirectionalLight(0xffffff, 2.6);
+    const rim = new THREE.DirectionalLight(0xffffff, 0.9);
     rim.position.set(-3, 6, -10);
     this.scene.add(rim);
 
@@ -47,10 +41,21 @@ export class ModelViewer {
   }
 
   async load(): Promise<void> {
-    const loader = new GLTFLoader();
-    loader.setMeshoptDecoder(MeshoptDecoder);
-    const gltf = await loader.loadAsync(MODEL_URL);
+    const gltfLoader = new GLTFLoader();
+    gltfLoader.setMeshoptDecoder(MeshoptDecoder);
+    const rgbeLoader = new RGBELoader();
+    const pmrem = new THREE.PMREMGenerator(this.renderer);
+
+    const [gltf, hdrTexture] = await Promise.all([
+      gltfLoader.loadAsync(MODEL_URL),
+      rgbeLoader.loadAsync(HDRI_URL),
+    ]);
     if (this.disposed) return;
+
+    this.scene.environment = pmrem.fromEquirectangular(hdrTexture).texture;
+    hdrTexture.dispose();
+    pmrem.dispose();
+
     this.scene.add(gltf.scene);
 
     if (gltf.animations.length > 0) {
