@@ -16,7 +16,8 @@ function formatUptime(ms: number): string {
 
 /** A "system monitor" widget — every number on it is a real browser signal, not a fake gauge. */
 export function initMonitorWidget(): void {
-  if (window.matchMedia('(max-width: 700px)').matches) return;
+  // keep in sync with responsive.css's mobile-layout breakpoint and draggable.ts's isMobile
+  if (window.matchMedia('(max-width: 700px), (max-height: 500px)').matches) return;
 
   const widget = document.getElementById('widget') as HTMLElement;
   const bar = document.getElementById('widgetBar') as HTMLElement;

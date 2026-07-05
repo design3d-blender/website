@@ -24,13 +24,15 @@
   }
 }
 
-/* below this width the window is no longer a floating panel: dragging is
-   disabled in JS (see draggable.ts's isMobile threshold), the widget/dock
-   don't fit a touch screen, and the consolebar (with its traffic lights)
-   swaps for the simpler topbar since minimize/maximize don't apply to a
-   full-bleed view. #window keeps `position: relative` (not static) so the
-   help button anchored inside it still has a positioning context. */
-@media screen and (max-width: 700px) {
+/* below this width — or below this height, which catches phones in landscape
+   that are plenty wide but only ~350-430px tall — the window is no longer a
+   floating panel: dragging is disabled in JS (see draggable.ts's isMobile
+   threshold and monitor-widget.ts's matching check), the widget/dock don't
+   fit a touch screen, and the consolebar (with its traffic lights) swaps for
+   the simpler topbar since minimize/maximize don't apply to a full-bleed
+   view. #window keeps `position: relative` (not static) so the help button
+   anchored inside it still has a positioning context. */
+@media screen and (max-width: 700px), screen and (max-height: 500px) {
   #window {
     position: relative;
     left: 0;

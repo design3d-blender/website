@@ -38,7 +38,12 @@ body {
 
 body {
   margin: 0;
+  /* 100vh on Chrome Android is the toolbar-retracted (larger) height, not what's
+     actually visible — with overflow: clip below, anything anchored near the
+     bottom (e.g. .help-fab) ends up rendered below the visible fold with no way
+     to scroll to it. 100svh always matches the smallest/visible viewport. */
   height: 100vh;
+  height: 100svh;
   overflow: clip;
   font-family: var(--font-mono);
   background: var(--bg-0);

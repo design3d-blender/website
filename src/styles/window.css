@@ -427,6 +427,7 @@ body.is-dragging-any {
   transform: translate(-50%, -50%);
   width: min(480px, 92vw);
   max-height: min(600px, 84vh);
+  max-height: min(600px, 84svh);
   display: flex;
   flex-direction: column;
   background: var(--panel);

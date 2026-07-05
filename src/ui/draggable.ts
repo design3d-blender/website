@@ -1,4 +1,5 @@
-const isMobile = () => window.matchMedia('(max-width: 700px)').matches;
+// keep in sync with responsive.css's mobile-layout breakpoint and monitor-widget.ts
+const isMobile = () => window.matchMedia('(max-width: 700px), (max-height: 500px)').matches;
 
 export interface DraggableOptions {
   bounds: HTMLElement;
